@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace JailMSAtims.Models
 {
-    // Models returned by AccountController actions.
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Display(Name = "Hometown")]
-        public string Hometown { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -74,9 +68,6 @@ namespace JailMSAtims.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        [Display(Name = "Hometown")]
-        public string Hometown { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -28,8 +28,7 @@ namespace JailMSAtims.Controllers
             UserManager = userManager;
         }
 
-        public ApplicationUserManager UserManager
-        {
+        public ApplicationUserManager UserManager {
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -38,18 +37,6 @@ namespace JailMSAtims.Controllers
             {
                 _userManager = value;
             }
-        }
-
-        // The Authorize Action is the end point which gets called when you access any
-        // protected Web API. If the user is not logged in then they will be redirected to 
-        // the Login page. After a successful login you can call a Web API.
-        [HttpGet]
-        public ActionResult Authorize()
-        {
-            var claims = new ClaimsPrincipal(User).Claims.ToArray();
-            var identity = new ClaimsIdentity(claims, "Bearer");
-            AuthenticationManager.SignIn(identity);
-            return new EmptyResult();
         }
 
         //
@@ -103,7 +90,7 @@ namespace JailMSAtims.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -132,7 +119,7 @@ namespace JailMSAtims.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null)
+            if (userId == null || code == null) 
             {
                 return View("Error");
             }
@@ -192,13 +179,13 @@ namespace JailMSAtims.Controllers
         {
             return View();
         }
-
+	
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            if (code == null)
+            if (code == null) 
             {
                 return View("Error");
             }
@@ -418,7 +405,7 @@ namespace JailMSAtims.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, Hometown = model.Hometown };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -426,13 +413,13 @@ namespace JailMSAtims.Controllers
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-
+                        
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // SendEmail(user.Email, callbackUrl, "Confirm your account", "Please confirm your account by clicking this link");
-
+                        
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -542,8 +529,7 @@ namespace JailMSAtims.Controllers
 
         private class ChallengeResult : HttpUnauthorizedResult
         {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
+            public ChallengeResult(string provider, string redirectUri) : this(provider, redirectUri, null)
             {
             }
 

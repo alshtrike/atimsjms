@@ -5,6 +5,11 @@ namespace JailMSAtims.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "User")]
+        public string User { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -38,9 +43,9 @@ namespace JailMSAtims.Models
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "User")]
+        public string User { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -53,6 +58,11 @@ namespace JailMSAtims.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "User")]
+        public string User { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

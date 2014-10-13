@@ -7,6 +7,23 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $("ul.nav li a").click(function(){
+                var page=$(this).attr('href');
+                $("#body").load("Home/" + page);
+                return false;
+            });
+            $("div.navbar-header a").click(function () {
+                var page = $(this).attr('href');
+                $("#body").load("Home/" + page);
+                return false;
+            });
+        });
+    </script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,23 +34,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="@Url.Action("Index","Home")" class="navbar-brand">
+                <a href="Index" class="navbar-brand">
                     <img src="@Url.Content("~/content/logo.jpg")" />
                 </a>
-               <!--@Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @id="atims-logo" })--> 
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="Index">Home</a></li>
+                    <li><a href="About">About</a></li>
+                    <li><a href="Contact">Contact</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container body-content" id="body">
+       @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - ATIMS JMS</p>

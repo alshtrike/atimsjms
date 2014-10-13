@@ -50,5 +50,11 @@ namespace JailMSAtims.Controllers
 
             return View();
         }
+        public ActionResult JailTab()
+        {
+            ViewBag.Message = "This is Jail tab";
+
+            return View();
+        }
     }
 }

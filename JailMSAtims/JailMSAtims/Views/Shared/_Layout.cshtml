@@ -8,17 +8,18 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+   
     
     <script>
         $(document).ready(function () {
             $("ul.navbar-left li a").click(function(){
                 var page=$(this).attr('href');
-                $("#body").load("Home/" + page);
+                $("#body").load(@Url.Content("/Home/")+page);
                 return false;
             });
             $("div.navbar-header a").click(function () {
                 var page = $(this).attr('href');
-                $("#body").load("Home/" + page);
+                $("#body").load("/Home/" + page);
                 return false;
             });
         });
@@ -41,8 +42,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="Index">Home</a></li>
-                    <li><a href="About">About</a></li>
-                    <li><a href="Contact">Contact</a></li>
+                    <li><a href="Users">User Management</a></li>
+                    <li><a href="PreBook">Pre-Book</a></li>
+                    <li><a href="PreScreen">Pre-Screen</a></li>
+                    <li><a href="Intake">Intake</a></li>
+                    <li><a href="Booking">Booking</a></li>
+                    <li><a href="Classification">Classification</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

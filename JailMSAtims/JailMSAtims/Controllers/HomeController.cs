@@ -13,16 +13,40 @@ namespace JailMSAtims.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Users()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This is User Management Tab";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult PreBook()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "This is pre-book tab";
+
+            return View();
+        }
+        public ActionResult Intake()
+        {
+            ViewBag.Message = "This is intake tab";
+
+            return View();
+        }
+        public ActionResult Booking()
+        {
+            ViewBag.Message = "This is booking tab";
+
+            return View();
+        }
+        public ActionResult PreScreen()
+        {
+            ViewBag.Message = "This is pre-screen tab";
+
+            return View();
+        }
+        public ActionResult Classification()
+        {
+            ViewBag.Message = "This is classification tab";
 
             return View();
         }

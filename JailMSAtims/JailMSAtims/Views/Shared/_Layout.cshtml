@@ -3,28 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title ATIMS JMS</title>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-   
-    
-    <script>
-        $(document).ready(function () {
-            $("ul.navbar-left li a").click(function(){
-                var page=$(this).attr('href');
-                $("#body").load(@Url.Content("/Home/")+page);
-                return false;
-            });
-            $("div.navbar-header a").click(function () {
-                var page = $(this).attr('href');
-                $("#body").load("/Home/" + page);
-                return false;
-            });
-        });
-    </script>
-
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,25 +23,26 @@
                 </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="Index">Home</a></li>
-                    <li><a href="Users">User Management</a></li>
-                    <li><a href="PreBook">Pre-Book</a></li>
-                    <li><a href="PreScreen">Pre-Screen</a></li>
-                    <li><a href="Intake">Intake</a></li>
-                    <li><a href="Booking">Booking</a></li>
-                    <li><a href="Classification">Classification</a></li>
-                    <li><a href="JailTab">Jail Tab</a></li>
+                <ul class="nav navbar-nav">
+                    <li>@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("Contact", "Contact", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("Jail Tab", "JailTab", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                        <li>@Ajax.ActionLink("RolesAdmin", "Index", "RolesAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
+                        <li>@Ajax.ActionLink("UsersAdmin", "Index", "UsersAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content" id="body">
-       @RenderBody()
+    <div class="container body-content" id="content">
+        @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - ATIMS JMS</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 

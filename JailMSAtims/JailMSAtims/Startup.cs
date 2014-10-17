@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin;
-using Owin;
+﻿using Owin;
 
-[assembly: OwinStartupAttribute(typeof(JailMSAtims.Startup))]
-namespace JailMSAtims
+namespace IdentitySample
 {
     public partial class Startup
     {

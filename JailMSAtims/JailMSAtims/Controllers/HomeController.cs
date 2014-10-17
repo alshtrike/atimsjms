@@ -1,58 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace JailMSAtims.Controllers
+namespace IdentitySample.Controllers
 {
     public class HomeController : Controller
-    {    [Authorize]
+    {
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Users()
+        [Authorize]
+        public ActionResult About()
         {
-            ViewBag.Message = "This is User Management Tab";
+            ViewBag.Message = "Your app description page.";
 
             return View();
         }
-
-        public ActionResult PreBook()
-        {
-            ViewBag.Message = "This is pre-book tab";
-
-            return View();
-        }
-        public ActionResult Intake()
-        {
-            ViewBag.Message = "This is intake tab";
-
-            return View();
-        }
-        public ActionResult Booking()
-        {
-            ViewBag.Message = "This is booking tab";
-
-            return View();
-        }
-        public ActionResult PreScreen()
-        {
-            ViewBag.Message = "This is pre-screen tab";
-
-            return View();
-        }
-        public ActionResult Classification()
-        {
-            ViewBag.Message = "This is classification tab";
-
-            return View();
-        }
+        [Authorize]
         public ActionResult JailTab()
         {
-            ViewBag.Message = "This is Jail tab";
+            ViewBag.Message = "This is JailTab";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
 
             return View();
         }

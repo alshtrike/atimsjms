@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" ng-app="GlassHouseModule">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/glass")
+    @RenderSection("scripts", required: false)
+</head>
+
+<body id="glass-body">
+<div id="glass-page-wrapper" ng-controller="GlassHouseController as glassCtrl">
+<div id="glass-header-wrapper"></div>
+<div id="glass-content-wrapper">
+
+    @RenderBody( )
+
+</div>
+<div id="glass-footer-wrapper"></div>
+</div>
+</body>
+
+</html>
+
+

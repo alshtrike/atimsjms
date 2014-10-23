@@ -13,7 +13,7 @@
 
 
     // GlassHouse  -  User Controller
-    glassApp.controller('GlassHouseUserController', function ($scope) {
+    glassApp.controller('GlassHouseLoginController', function ($scope) {
 
         // Login Form Controller Data
         //  Default Login Text

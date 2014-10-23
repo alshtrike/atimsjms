@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -17,14 +18,20 @@ namespace GlassHouse.Models{
 
     }
 
-    public class ApplicationDbContext: IdentityDbContext<GlassHouseUser>{
+    public class GlassHouseDbContext: IdentityDbContext<GlassHouseUser>{
 
-        public ApplicationDbContext( ): base( "DefaultConnection", throwIfV1Schema: false ){
+        public GlassHouseDbContext( ): base( "DefaultConnection", throwIfV1Schema: false ){
 
         }
 
-        public static ApplicationDbContext Create( ){
-            return new ApplicationDbContext( );
+        static GlassHouseDbContext( ){
+            // Set the database intializer which is run once during application start
+            // This seeds the database with admin user credentials and admin role
+            Database.SetInitializer<GlassHouseDbContext>( new ApplicationDbInitializer( ) );
+        }
+
+        public static GlassHouseDbContext Create( ){
+            return new GlassHouseDbContext( );
         }
 
     }

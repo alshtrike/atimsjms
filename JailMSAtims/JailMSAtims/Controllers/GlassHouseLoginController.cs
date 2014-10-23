@@ -6,25 +6,26 @@ using System.Web.Mvc;
 
 namespace GlassHouse.Controllers{
 
-    public class GlassHouseUserController : Controller{
+    [AllowAnonymous]
+    public class GlassHouseLoginController : Controller{
 
         private GlassHouseUserManager _userManager;
 
-        public GlassHouseUserController( ){
+        public GlassHouseLoginController( ){
 
         }
 
-        public GlassHouseUserController( GlassHouseUserManager userManager ){
+        public GlassHouseLoginController( GlassHouseUserManager userManager ){
             _userManager = userManager;
         }
 
-        public ActionResult User( ){
+        public ActionResult Login( ){
             return View( );
 
         }
 
         // @TODO This shouldn't be readily accessible
-        public ActionResult _LoginViewPartial( ){
+        public ActionResult _LoginFormPartial( ){
             return View( );
 
         }

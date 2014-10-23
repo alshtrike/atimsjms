@@ -163,9 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\GlassHouseConfig.cs" />
+    <Compile Include="App_Start\GlassHouseLoginConfig.cs" />
     <None Include="Controllers\Depricated\AccountController.cs" />
     <Compile Include="Controllers\GlassHouseController.cs" />
-    <Compile Include="Controllers\GlassHouseUserController.cs" />
+    <Compile Include="Controllers\GlassHouseLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -966,8 +967,8 @@
     <Content Include="Scripts\angular\version.json" />
     <Content Include="Views\GlassHouse\Index.cshtml" />
     <Content Include="Views\GlassHouse\_GlassHouseLayout.cshtml" />
-    <Content Include="Views\GlassHouseUser\User.cshtml" />
-    <Content Include="Views\GlassHouseUser\_LoginHttpHandler.cshtml" />
+    <Content Include="Views\GlassHouseLogin\Login.cshtml" />
+    <Content Include="Views\GlassHouseLogin\_LoginHttpHandler.cshtml" />
     <None Include="Views\Depricated\Account\ConfirmEmail.cshtml" />
     <None Include="Views\Depricated\Account\ExternalLoginConfirmation.cshtml" />
     <None Include="Views\Depricated\Account\ExternalLoginFailure.cshtml" />
@@ -985,7 +986,7 @@
     <None Include="Views\Depricated\Shared\Error.cshtml" />
     <None Include="Views\Depricated\Shared\_Layout.cshtml" />
     <None Include="Views\Depricated\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\GlassHouseUser\_LoginViewPartial.cshtml" />
+    <Content Include="Views\GlassHouseLogin\_LoginFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

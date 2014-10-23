@@ -1,16 +1,7 @@
 ﻿
 using GlassHouse.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.DataProtection;
-using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -32,13 +23,13 @@ namespace GlassHouse{
                     "~/Scripts/jquery/jquery-{version}.js" ) );
             bundles.Add(
                 new ScriptBundle( "~/bundles/jqueryval" ).Include(
-                    "~/Scripts/jquery/jquery.validate*"));
+                    "~/Scripts/jquery/jquery.validate*") );
 
             // bootstrap
             bundles.Add(
                 new ScriptBundle( "~/bundles/bootstrap" ).Include(
                   "~/Scripts/bootstrap/bootstrap.min.js",
-                  "~/Scripts/bootstrap/respond.min.js"));
+                  "~/Scripts/bootstrap/respond.min.js") );
             bundles.Add(
                 new StyleBundle( "~/Content/css").Include(
                   "~/Content/bootstrap.min.css",
@@ -61,7 +52,6 @@ namespace GlassHouse{
 
 
         // AKA "RouteConfig.cs"
-
         public static void RegisterRoutes( RouteCollection routes){
             routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
@@ -79,6 +69,7 @@ namespace GlassHouse{
 
         public static void RegisterGlobalFilters( GlobalFilterCollection filters ){
             filters.Add( new HandleErrorAttribute( ) );
+            filters.Add( new System.Web.Mvc.AuthorizeAttribute( ) );
 
         }
 
@@ -98,76 +89,6 @@ namespace GlassHouse{
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-        }
-
-    }
-
-
-
-    // AKA "Startup.Auth.cs"
-    // @TODO: Make alternate Authentication modular
-    public partial class Startup{
-
-        int COOKIE_VALIDATE_TIME = 30;
-
-        public void ConfigureAuth( IAppBuilder app ){
-            app.CreatePerOwinContext( ApplicationDbContext.Create );
-            app.CreatePerOwinContext<GlassHouseUserManager>( GlassHouseUserManager.Create );
-
-            // ME LOVE COOKIES *nomnomnom*
-            app.UseCookieAuthentication(
-                new CookieAuthenticationOptions{
-                    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                    LoginPath = new PathString( "/GlassHouseUser/User" ),
-                    Provider = new CookieAuthenticationProvider{
-                        OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<GlassHouseUserManager, GlassHouseUser>(
-                            validateInterval: TimeSpan.FromMinutes(COOKIE_VALIDATE_TIME ),
-                            regenerateIdentity: ( manager, user ) => user.GenerateUserIdentityAsync( manager ) )
-                    }
-                }
-            );
-
-            app.UseExternalSignInCookie( DefaultAuthenticationTypes.ExternalCookie );
-
-        }
-
-    }
-
-
-
-    // AKA "IdentityConfig.cs"
-
-    public class GlassHouseUserManager: UserManager<GlassHouseUser>{
-
-        public GlassHouseUserManager( IUserStore<GlassHouseUser> store )
-            : base( store ){}
-
-        public static GlassHouseUserManager Create( IdentityFactoryOptions<GlassHouseUserManager> options, IOwinContext context ){
-            var manager = new GlassHouseUserManager( new UserStore<GlassHouseUser>( context.Get<ApplicationDbContext>( ) ) );
-
-            // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<GlassHouseUser>( manager ){
-                AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
-            };
-
-            // Configure validation logic for passwords
-            manager.PasswordValidator = new PasswordValidator{
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
-            };
-
-            var dataProtectionProvider = options.DataProtectionProvider;
-            if( dataProtectionProvider != null ){
-                manager.UserTokenProvider = new DataProtectorTokenProvider<GlassHouseUser>(
-                    dataProtectionProvider.Create( "GlassHouse Identity" ) );
-            }
-
-            return manager;
 
         }
 

@@ -10,14 +10,6 @@ namespace GlassHouse.Controllers{
             return View( );
         }
 
-        public ActionResult _NavBar( ){
-            return View( );
-        }
-
-        public ActionResult _UserBar( ){
-            return View( );
-        }
-
     }
 
 }

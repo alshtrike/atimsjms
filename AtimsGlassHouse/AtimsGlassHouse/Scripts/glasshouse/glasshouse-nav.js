@@ -17,7 +17,7 @@ var glassHouseNavController = function( $scope ){
     this.selectMainNav = function( event, sectionName ){
         // TODO: Main Section Auth
         // TODO: Switch To Selected Section
-        $scope.glassHouseNavCtrl.currentSubNav = $scope.glassHouseNavCtrl.subNavSet[sectionName];
+        $scope.glassHouseNavCtrl.currentSubNav = $scope.glassHouseNavCtrl.subNav[sectionName];
     };
     this.selectSubNav = function( event, sectionName ){
         // TODO: Sub Section Auth
@@ -53,11 +53,17 @@ var glassHouseNavController = function( $scope ){
     this.newIconStateTemplate = function( stateName, displayNamePrefix, cssClassTemplate,
             clickFunction, hoverOverFunction, hoverOutFunction ){
         return {
+            // Name used to access the state
             name: stateName,
+            // Name displayed on the icon (used with ng-bind)
             display: displayNamePrefix,
+            // CSS Class for the icon (used with ng-class)
             cssClass: cssClassTemplate,
+            // Function to call when the icon is clicked (used with ng-onclick)
             onClick: clickFunction,
+            // Function to call when the mouse moves over the icon (used with ng-mouseover)
             onHoverOver: hoverOverFunction,
+            // Function to call when the mouse moves off the icon (used with ng-mouseleave)
             onHoverOut: hoverOutFunction
         };
     };
@@ -68,9 +74,13 @@ var glassHouseNavController = function( $scope ){
             stateTable[states[i].name] = states[i];
         };
         return {
+            // Name of the icon
             name: iconName,
+            // Name of the current state
             state: stateTable[defaultState],
+            // List of all states accessed by name
             states: stateTable,
+            // Raw data attached to the state (used with ng-bind to a span)
             raw: raw
         };
     };
@@ -116,10 +126,10 @@ var glassHouseNavController = function( $scope ){
         $scope.$emit( 'selectUserNav', iconName );
     };
     this.userNav.stateTemplates = [
-        this.newIconStateTemplate("default", "", "glass-usernav-%NAME", this.userNav.clickIcon),
-        this.newIconStateTemplate("selected", "", "glass-usernav-icon-selected glass-usernav-%NAME", this.userNav.clickIcon)
+        this.newIconStateTemplate( "default", "", "glass-usernav-%NAME", this.userNav.clickIcon ),
+        this.newIconStateTemplate( "selected", "", "glass-usernav-icon-selected glass-usernav-%NAME", this.userNav.clickIcon )
     ];
-    this.userNav.iconSet = this.newIconSet(this.userNav.iconNames, this.userNav.stateTemplates);
+    this.userNav.iconSet = this.newIconSet( this.userNav.iconNames, this.userNav.stateTemplates );
 
 
 
@@ -143,34 +153,34 @@ var glassHouseNavController = function( $scope ){
 
     /**** Sub Navigation Menu's ****/
 
-    this.buildSubNavMenu = function (subNavSet, subNavName, iconNames) {
+    this.buildSubNavMenu = function( subNavSet, subNavName, iconNames ){
         /** Subnav Booking Menu **/
         subNavSet[subNavName] = {};
         subNavSet[subNavName].iconNames = iconNames;
-        subNavSet[subNavName].clickIcon = function (iconName) {
-            $scope.$emit('selectSubNav', iconName);
+        subNavSet[subNavName].clickIcon = function( iconName ){
+            $scope.$emit('selectSubNav', iconName );
         };
         subNavSet[subNavName].stateTemplates = [
-            this.newIconStateTemplate("default", "", this.cssStringFormat("glass-subnav-%NAME", subNavName) + "-%NAME", subNavSet[subNavName].clickIcon),
-            this.newIconStateTemplate("selected", "", this.cssStringFormat("glass-subnav-icon-selected glass-subnav-%NAME", subNavName) + "-%NAME", subNavSet[subNavName].clickIcon)
+            this.newIconStateTemplate( "default", "", this.cssStringFormat( "glass-subnav-%NAME", subNavName ) + "-%NAME", subNavSet[subNavName].clickIcon ),
+            this.newIconStateTemplate( "selected", "", this.cssStringFormat( "glass-subnav-icon-selected glass-subnav-%NAME", subNavName ) + "-%NAME", subNavSet[subNavName].clickIcon )
         ];
-        subNavSet[subNavName].iconSet = this.newIconSet(subNavSet[subNavName].iconNames, subNavSet[subNavName].stateTemplates);
+        subNavSet[subNavName].iconSet = this.newIconSet(subNavSet[subNavName].iconNames, subNavSet[subNavName].stateTemplates );
     }
 
     this.subNav = {};
 
-    this.buildSubNavMenu( subNav, 'Intake', [
+    this.buildSubNavMenu( this.subNav, 'Intake', [
         'PreBook', 'Intake', 'Temp Hold', 'Inventory',
         'Supply', 'File', 'Reports'
     ]);
 
-    this.buildSubNavMenu( subNav, 'Booking', [
+    this.buildSubNavMenu( this.subNav, 'Booking', [
         'Booking', 'Release', 'Supervisor', 'Active',
         'Search', 'Housing', 'Appt', 'Attach',
         'File', 'Reports'
     ]);
 
-    this.buildSubNavMenu( subNav, 'Classify', [
+    this.buildSubNavMenu( this.subNav, 'Classify', [
         'Class File', 'Queue', 'Viewer', 'Housing',
         'Transfer', 'Attach', 'Incident', 'Grievance',
         'Alerts', 'Search', 'File', 'Reports'

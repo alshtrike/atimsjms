@@ -1,0 +1,36 @@
+﻿body{
+    background-color: #999999;
+    padding: 20px 20px 20px 20px;
+}
+
+
+#glass-nav-bar{
+    margin: 0 auto 0 auto;
+    padding: 20px 20px 20px 20px;
+    background-color: #BBBBBB;
+}
+
+#glass-nav-bar ul {
+    display: inline-block;
+    width: 100%;
+    background-color: #CCCCCC;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#glass-nav-bar ul li{
+    display: inline-block;
+    float: left;
+    padding: 5px 10px 5px 10px;
+    background-color: #DDDDDD;
+    cursor: default;
+    transition: background-color 0.2s linear 0s;
+}
+
+#glass-nav-bar ul li:hover{
+    background-color: #EEEEEE;
+}
+
+#glass-nav-bar-selected{
+    background-color: #FFFFFF;
+}

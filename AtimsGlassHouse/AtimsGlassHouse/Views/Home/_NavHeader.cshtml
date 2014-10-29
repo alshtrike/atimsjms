@@ -3,39 +3,36 @@
 
     <!-- User Navigation Bar-->
     <ul>
-        <li ng-repeat="icon in glassHouseNavCtrl.userNav.iconSet" class="glass-user-icon">
-            <a ng-bind="icon.state.display"
-               ng-class="icon.state.css"
-               ng-click="icon.state.onClick( icon.name )"
-               ng-mouseover="icon.state.hoverOver( icon.name )"
-               ng-mouseleave="icon.state.hoverOut( icon.name )">
-            </a>
+        <li ng-repeat="icon in glassHouseNavCtrl.userNav.iconSet"
+            ng-class="icon.state.css"
+            ng-click="icon.state.onClick( icon.name )"
+            ng-mouseover="icon.state.hoverOver( icon.name )"
+            ng-mouseleave="icon.state.hoverOut( icon.name )">
+            <span ng-bind="icon.state.display"></span>
             <span ng-bind="icon.raw"></span>
         </li>
     </ul>
 
     <!-- Main Navigation Bar-->
     <ul>
-        <li ng-repeat="icon in glassHouseNavCtrl.mainNav.iconSet" class="glass-nav-icon">
-            <a ng-bind="icon.state.display"
-               ng-class="icon.state.css"
-               ng-click="icon.state.onClick( icon.name )"
-               ng-mouseover="icon.state.hoverOver( icon.name )"
-               ng-mouseleave="icon.state.hoverOut( icon.name )">
-            </a>
+        <li ng-repeat="icon in glassHouseNavCtrl.mainNav.iconSet"
+            ng-class="icon.state.css"
+            ng-click="icon.state.onClick( icon.name )"
+            ng-mouseover="icon.state.hoverOver( icon.name )"
+            ng-mouseleave="icon.state.hoverOut( icon.name )">
+            <span ng-bind="icon.state.display"></span>
             <span ng-bind="icon.raw"></span>
         </li>
     </ul>
 
     <!-- Sub Navigation Bar-->
     <ul>
-        <li ng-repeat="icon in glassHouseNavCtrl.currentSubNav.iconSet" class="glass-nav-icon">
-            <a ng-bind="icon.state.display"
-               ng-class="icon.state.css"
-               ng-click="icon.state.onClick( icon.name )"
-               ng-mouseover="icon.state.hoverOver( icon.name )"
-               ng-mouseleave="icon.state.hoverOut( icon.name )">
-            </a>
+        <li ng-repeat="icon in glassHouseNavCtrl.currentSubNav.iconSet"
+            ng-class="icon.state.css"
+            ng-click="icon.state.onClick( icon.name )"
+            ng-mouseover="icon.state.hoverOver( icon.name )"
+            ng-mouseleave="icon.state.hoverOut( icon.name )">
+            <span ng-bind="icon.state.display"></span>
             <span ng-bind="icon.raw"></span>
         </li>
     </ul>

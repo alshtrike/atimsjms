@@ -1,5 +1,5 @@
 ﻿
-<div id="glass-nav-bar" ng-controller="GlassHouseNavController as glassHouseNavCtrl">
+<div id="glass-nav-bar" ng-controller="GlassHouseNavController as glassHouseNavCtrl" ng-init="glassHouseNavCtrl.init( )">
 
     <!-- User Navigation Bar-->
     <ul>
@@ -29,7 +29,7 @@
 
     <!-- Sub Navigation Bar-->
     <ul>
-        <li ng-repeat="icon in glassHouseNavCtrl.subnav['intake'].iconSet" class="glass-nav-icon">
+        <li ng-repeat="icon in glassHouseNavCtrl.currentSubNav.iconSet" class="glass-nav-icon">
             <a ng-bind="icon.state.display"
                ng-class="icon.state.css"
                ng-click="icon.state.onClick( icon.name )"

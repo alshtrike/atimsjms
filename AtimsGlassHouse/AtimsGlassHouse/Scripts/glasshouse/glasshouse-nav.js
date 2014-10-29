@@ -1,23 +1,35 @@
 ﻿
-var glassHouseNavController = function ($scope) {
-    // Default Variables
-    this.mainSection = "";
-    this.subSection = "";
-
-    // Navigation Control
-    this.goToMainNav = function( sectionName ){
-        // TODO: Main Section Auth
+var glassHouseNavController = function( $scope ){
+    this.init = function( ){
+        // Default Variables
+        this.mainSection = "";
+        this.subSection = "";
+        this.currentSubNav = this.subnav['Intake'];
     };
-    this.goToUserNav = function (sectionName) {
+
+
+
+    /**** Navigation Control ****/
+    this.selectUserNav = function( event, sectionName ){
         // TODO: User Section Auth
+        // TODO: Switch To Selected Section
     };
-    this.goToSubNav = function( sectionName ){
+    this.selectMainNav = function( event, sectionName ){
+        // TODO: Main Section Auth
+        // TODO: Switch To Selected Section
+        $scope.glassHouseNavCtrl.currentSubNav = $scope.glassHouseNavCtrl.subnav[sectionName];
+    };
+    this.selectSubNav = function( event, sectionName ){
         // TODO: Sub Section Auth
+        // TODO: Switch To Selected Section
     };
+    $scope.$on( 'selectUserNav', this.selectUserNav );
+    $scope.$on( 'selectMainNav', this.selectMainNav );
+    $scope.$on( 'selectSubNav', this.selectSubNav );
 
 
 
-    /** Nav Icon Constructors **/
+    /**** Nav Icon Constructors ****/
 
     // Because NullPointerExceptions are a pain
     // We should handle it immediately, not check if the function is null elsewhere
@@ -94,6 +106,23 @@ var glassHouseNavController = function ($scope) {
 
 
 
+    /**** User Navigation Menu ****/
+    this.userNav = {};
+    this.userNav.iconNames = [
+        'User Info', 'Minimize Maximize', 'Settings', 'Clock In Out',
+        'Inbox', 'Requests', 'Workload'
+    ];
+    this.userNav.clickIcon = function( iconName ) {
+        $scope.$emit( 'selectUserNav', iconName );
+    };
+    this.userNav.stateTemplates = [
+        this.newIconStateTemplate("default", "", "glass-usernav-%NAME", this.userNav.clickIcon),
+        this.newIconStateTemplate("selected", "", "glass-usernav-icon-selected glass-usernav-%NAME", this.userNav.clickIcon)
+    ];
+    this.userNav.iconSet = this.newIconSet(this.userNav.iconNames, this.userNav.stateTemplates);
+
+
+
     /**** Main Navigation Menu ****/
     this.mainNav = {};
     this.mainNav.iconNames = [
@@ -102,7 +131,7 @@ var glassHouseNavController = function ($scope) {
         'Alt Sent', 'Money', 'Medical'
     ];
     this.mainNav.clickIcon = function( iconName ){
-        goToMainNav( iconName );
+        $scope.$emit( 'selectMainNav', iconName );
     };
     this.mainNav.stateTemplates = [
         this.newIconStateTemplate( "default", "", "glass-nav-%NAME", this.mainNav.clickIcon ),
@@ -112,39 +141,42 @@ var glassHouseNavController = function ($scope) {
 
 
 
-    /**** User Navigation Menu ****/
-    this.userNav = {};
-    this.userNav.iconNames = [
-        'User Info', 'Minimize Maximize', 'Settings', 'Clock In Out',
-        'Inbox', 'Requests', 'Workload'
-    ];
-    this.userNav.clickIcon = function( iconName ){
-        goToUserNav( iconName );
-    };
-    this.userNav.stateTemplates = [
-        this.newIconStateTemplate("default", "", "glass-usernav-%NAME", this.userNav.clickIcon),
-        this.newIconStateTemplate("selected", "", "glass-usernav-icon-selected glass-usernav-%NAME", this.userNav.clickIcon)
-    ];
-    this.userNav.iconSet = this.newIconSet( this.userNav.iconNames, this.userNav.stateTemplates );
-
-
     /**** Sub Navigation Menu's ****/
+    this.buildSubNavMenu = function( subNavName, iconNames ){
+        /** Subnav Booking Menu **/
+        this.subnav[subNavName] = {};
+        this.subnav[subNavName].iconNames = iconNames;
+        this.subnav[subNavName].clickIcon = function( iconName ){
+            $scope.$emit( 'selectSubNav', iconName );
+        };
+        this.subnav[subNavName].stateTemplates = [
+            this.newIconStateTemplate( "default", "", this.cssStringFormat( "glass-subnav-%NAME", subNavName ) + "-%NAME", this.subnav[subNavName].clickIcon ),
+            this.newIconStateTemplate( "selected", "", this.cssStringFormat( "glass-subnav-icon-selected glass-subnav-%NAME", subNavName ) + "-%NAME", this.subnav[subNavName].clickIcon )
+        ];
+        this.subnav[subNavName].iconSet = this.newIconSet( this.subnav[subNavName].iconNames, this.subnav[subNavName].stateTemplates );
+    }
+
     this.subnav = {};
 
-    /** Subnav Intake Menu **/
-    this.subnav['intake'] = {};
-    this.subnav['intake'].iconNames = [
-        'PreBook', 'Intake', 'TempHold', 'Inventory',
+    this.buildSubNavMenu( 'Intake', [
+        'PreBook', 'Intake', 'Temp Hold', 'Inventory',
         'Supply', 'File', 'Reports'
-    ];
-    this.subnav['intake'].clickIcon = function( iconName ){
-        goToSubNav( iconName );
-    };
-    this.subnav['intake'].stateTemplates = [
-        this.newIconStateTemplate( "default", "", "glass-subnav-intake-%NAME", this.subnav['intake'].clickIcon ),
-        this.newIconStateTemplate( "selected", "", "glass-subnav-icon-selected glass-subnav-intake-%NAME", this.subnav['intake'].clickIcon )
-    ];
-    this.subnav['intake'].iconSet = this.newIconSet( this.subnav['intake'].iconNames, this.subnav['intake'].stateTemplates );
+    ]);
+
+    this.buildSubNavMenu('Booking', [
+        'Booking', 'Release', 'Supervisor', 'Active',
+        'Search', 'Housing', 'Appt', 'Attach',
+        'File', 'Reports'
+    ]);
+
+    this.buildSubNavMenu( 'Classify', [
+        'Class File', 'Queue', 'Viewer', 'Housing',
+        'Transfer', 'Attach', 'Incident', 'Grievance',
+        'Alerts', 'Search', 'File', 'Reports'
+    ]);
+
+    // TODO: Finish Menus
+    // TODO: Move to Model Class
 
 };
 glassHouseNavController.$inject = ['$scope'];

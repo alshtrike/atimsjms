@@ -1,6 +1,35 @@
-﻿@{
-    ViewBag.Title = "Welcome";
-}
+﻿
+<!DOCTYPE html>
 
-<h2>Splash Page</h2>
+<html ng-app="glassHouseApp">
+
+<head>
+
+<meta name="viewport" content="width=device-width" />
+<title ng-bind="glassPageTitle"></title>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/respond")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/angular")
+@Scripts.Render("~/bundles/glasshouse-authorized")
+
+</head>
+
+<body ng-controller="GlassHouseController as glassHouseCtrl">
+
+    @Html.Partial( "_NavHeader" )
+
+    <div id="glass-body-content">
+
+    </div>
+
+</body>
+
+
+
+
+</html>
+
 

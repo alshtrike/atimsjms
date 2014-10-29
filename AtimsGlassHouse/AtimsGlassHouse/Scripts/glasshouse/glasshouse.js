@@ -1,13 +1,21 @@
 ﻿
 
-    // GlassHouse Main Controller
-    var glassHouseApp = angular.module( "glassHouseApp", [] );
+// Config Functions
+    
+    var glassHouseConfig = function( $routeProvider ) {
+        // Routing
+    }
+    glassHouseConfig.$inject = ['$routeProvider'];
+    
 
-    glassHouseApp.controller( "GlassHouseController", function( $scope ){
+    // Controller Functions
+    var glassHouseController = function( $scope ){
+        $scope.glassPageTitle = "Atims GlassHouse";
 
-    });
+    };
+    glassHouseController.$inject = ['$scope'];
 
-    glassHouseApp.controller( "GlassHouseLoginController", function( $scope ){
+    var glassHouseLoginController = function( $scope ){
         // Login Page View Control
         this.currentView = "loginForm";
         this.showingView = function( viewName ){
@@ -35,6 +43,15 @@
             // TODO: Forgot form submit
         };
         
-    });
+    };
+    glassHouseLoginController.$inject = ['$scope'];
+
+
+    // App Declaration
+    var glassHouseApp = angular.module( "glassHouseApp", ['ngRoute'] );
+    glassHouseApp.config( glassHouseConfig );
+    
+    glassHouseApp.controller( "GlassHouseController", glassHouseController );
+    glassHouseApp.controller( "GlassHouseLoginController", glassHouseLoginController );
     
 

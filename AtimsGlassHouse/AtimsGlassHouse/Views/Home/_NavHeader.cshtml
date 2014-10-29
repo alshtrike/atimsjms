@@ -1,0 +1,43 @@
+﻿
+<div id="glass-nav-bar" ng-controller="GlassHouseNavController as glassHouseNavCtrl">
+
+    <!-- User Navigation Bar-->
+    <ul>
+        <li ng-repeat="icon in glassHouseNavCtrl.userNav.iconSet" class="glass-user-icon">
+            <a ng-bind="icon.state.display"
+               ng-class="icon.state.css"
+               ng-click="icon.state.onClick( icon.name )"
+               ng-mouseover="icon.state.hoverOver( icon.name )"
+               ng-mouseleave="icon.state.hoverOut( icon.name )">
+            </a>
+            <span ng-bind="icon.raw"></span>
+        </li>
+    </ul>
+
+    <!-- Main Navigation Bar-->
+    <ul>
+        <li ng-repeat="icon in glassHouseNavCtrl.mainNav.iconSet" class="glass-nav-icon">
+            <a ng-bind="icon.state.display"
+               ng-class="icon.state.css"
+               ng-click="icon.state.onClick( icon.name )"
+               ng-mouseover="icon.state.hoverOver( icon.name )"
+               ng-mouseleave="icon.state.hoverOut( icon.name )">
+            </a>
+            <span ng-bind="icon.raw"></span>
+        </li>
+    </ul>
+
+    <!-- Sub Navigation Bar-->
+    <ul>
+        <li ng-repeat="icon in glassHouseNavCtrl.subnav['intake'].iconSet" class="glass-nav-icon">
+            <a ng-bind="icon.state.display"
+               ng-class="icon.state.css"
+               ng-click="icon.state.onClick( icon.name )"
+               ng-mouseover="icon.state.hoverOver( icon.name )"
+               ng-mouseleave="icon.state.hoverOut( icon.name )">
+            </a>
+            <span ng-bind="icon.raw"></span>
+        </li>
+    </ul>
+
+</div>

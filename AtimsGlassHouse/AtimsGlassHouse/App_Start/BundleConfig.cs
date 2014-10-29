@@ -33,12 +33,16 @@ namespace GlassHouse{
             bundles.Add( new ScriptBundle( "~/bundles/respond" ).Include(
                         "~/Scripts/respond/respond.js" ) );
 
-            bundles.Add( new ScriptBundle( "~/bundles/glasshouse" ).Include(
+            bundles.Add(new ScriptBundle( "~/bundles/glasshouse-anonymous" ).Include(
                         "~/Scripts/glasshouse/glasshouse.js" ) );
 
+            bundles.Add( new ScriptBundle( "~/bundles/glasshouse-authorized" ).Include(
+                        "~/Scripts/glasshouse/glasshouse.js",
+                        "~/Scripts/glasshouse/glasshouse-nav.js" ) );
+
             bundles.Add( new StyleBundle( "~/Content/css" ).Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css" ) );
+                        "~/Content/bootstrap.css",
+                        "~/Content/site.css" ) );
 
         }
 

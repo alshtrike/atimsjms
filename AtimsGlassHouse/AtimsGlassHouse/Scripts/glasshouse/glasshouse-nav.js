@@ -4,7 +4,7 @@ var glassHouseNavController = function( $scope ){
         // Default Variables
         this.mainSection = "";
         this.subSection = "";
-        this.currentSubNav = this.subnav['Intake'];
+        this.currentSubNav = this.subNav['Intake'];
     };
 
 
@@ -17,7 +17,7 @@ var glassHouseNavController = function( $scope ){
     this.selectMainNav = function( event, sectionName ){
         // TODO: Main Section Auth
         // TODO: Switch To Selected Section
-        $scope.glassHouseNavCtrl.currentSubNav = $scope.glassHouseNavCtrl.subnav[sectionName];
+        $scope.glassHouseNavCtrl.currentSubNav = $scope.glassHouseNavCtrl.subNavSet[sectionName];
     };
     this.selectSubNav = function( event, sectionName ){
         // TODO: Sub Section Auth
@@ -142,34 +142,35 @@ var glassHouseNavController = function( $scope ){
 
 
     /**** Sub Navigation Menu's ****/
-    this.buildSubNavMenu = function( subNavName, iconNames ){
+
+    this.buildSubNavMenu = function (subNavSet, subNavName, iconNames) {
         /** Subnav Booking Menu **/
-        this.subnav[subNavName] = {};
-        this.subnav[subNavName].iconNames = iconNames;
-        this.subnav[subNavName].clickIcon = function( iconName ){
-            $scope.$emit( 'selectSubNav', iconName );
+        subNavSet[subNavName] = {};
+        subNavSet[subNavName].iconNames = iconNames;
+        subNavSet[subNavName].clickIcon = function (iconName) {
+            $scope.$emit('selectSubNav', iconName);
         };
-        this.subnav[subNavName].stateTemplates = [
-            this.newIconStateTemplate( "default", "", this.cssStringFormat( "glass-subnav-%NAME", subNavName ) + "-%NAME", this.subnav[subNavName].clickIcon ),
-            this.newIconStateTemplate( "selected", "", this.cssStringFormat( "glass-subnav-icon-selected glass-subnav-%NAME", subNavName ) + "-%NAME", this.subnav[subNavName].clickIcon )
+        subNavSet[subNavName].stateTemplates = [
+            this.newIconStateTemplate("default", "", this.cssStringFormat("glass-subnav-%NAME", subNavName) + "-%NAME", subNavSet[subNavName].clickIcon),
+            this.newIconStateTemplate("selected", "", this.cssStringFormat("glass-subnav-icon-selected glass-subnav-%NAME", subNavName) + "-%NAME", subNavSet[subNavName].clickIcon)
         ];
-        this.subnav[subNavName].iconSet = this.newIconSet( this.subnav[subNavName].iconNames, this.subnav[subNavName].stateTemplates );
+        subNavSet[subNavName].iconSet = this.newIconSet(subNavSet[subNavName].iconNames, subNavSet[subNavName].stateTemplates);
     }
 
-    this.subnav = {};
+    this.subNav = {};
 
-    this.buildSubNavMenu( 'Intake', [
+    this.buildSubNavMenu( subNav, 'Intake', [
         'PreBook', 'Intake', 'Temp Hold', 'Inventory',
         'Supply', 'File', 'Reports'
     ]);
 
-    this.buildSubNavMenu('Booking', [
+    this.buildSubNavMenu( subNav, 'Booking', [
         'Booking', 'Release', 'Supervisor', 'Active',
         'Search', 'Housing', 'Appt', 'Attach',
         'File', 'Reports'
     ]);
 
-    this.buildSubNavMenu( 'Classify', [
+    this.buildSubNavMenu( subNav, 'Classify', [
         'Class File', 'Queue', 'Viewer', 'Housing',
         'Transfer', 'Attach', 'Incident', 'Grievance',
         'Alerts', 'Search', 'File', 'Reports'

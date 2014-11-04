@@ -36,5 +36,7 @@ namespace IdentitySample.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<JailMSAtims.Models.Inmate> Inmates { get; set; }
     }
 }

@@ -1,7 +1,94 @@
-﻿@{
-    ViewBag.Title = "Jail Tab";
+﻿<div ng-app="JailApp">
+    <div data-ng-controller="InmateController">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong class="error">{{ error }}</strong>
+                    <p data-ng-hide="addMode"><a data-ng-click="toggleAdd()" href="javascript:;" class="btn btn-primary">Add New</a></p>
+                    <form name="addInmate" data-ng-show="addMode" style="width:600px;margin:0px auto;">
+                        <div class="form-group">
+                            <label for="cid" class="col-sm-2 control-label">ID:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="cid" placeholder="please enter id" data-ng-model="newinmate.id" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cname" class="col-sm-2 control-label">First Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="fname" placeholder="please enter your first name" data-ng-model="newinmate.FirstName" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2 control-label">Last Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="lname" placeholder="please enter your last name" data-ng-model="newinmate.LastName" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city" class="col-sm-2 control-label">Age:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="age" placeholder="please enter your age" data-ng-model="newinmate.Age" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Add" data-ng-click="add()" data-ng-disabled="!addInmate.$valid" class="btn btn-primary" />
+                                <input type="button" value="Cancel" data-ng-click="toggleAdd()" class="btn btn-primary" />
+                            </div>
+                        </div>
+                        <br />
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" style="width:800px">
+                            <tr>
+                                <th>#</th>
+                                <td>FirstName</td>
+                                <th>LastName</th>
+                                <th>Age</th>
+                                <th></th>
+                            </tr>
+                            <tr data-ng-repeat="inmate in inmates">
+                                <td><strong data-ng-hide="inmate.editMode">{{ inmate.id }}</strong></td>
+                                <td>
+                                    <p data-ng-hide="inmate.editMode">{{ inmate.FirstName }}</p>
+                                    <input data-ng-show="inmate.editMode" type="text" data-ng-model="inmate.FirstName" />
+                                </td>
+                                <td>
+                                    <p data-ng-hide="inmate.editMode">{{ inmate.LastName }}</p>
+                                    <input data-ng-show="inmate.editMode" type="text" data-ng-model="inmate.LastName" />
+                                </td>
+                                <td>
+                                    <p data-ng-hide="inmate.editMode">{{ inmate.Age }}</p>
+                                    <input data-ng-show="inmate.editMode" type="text" data-ng-model="inmate.Age" />
+                                </td>
+        
+                                <td>
+                                    <p data-ng-hide="inmate.editMode"><a data-ng-click="toggleEdit(inmate)" href="javascript:;">Edit</a> | <a data-ng-click="deleteinmate(inmate)" href="javascript:;">Delete</a></p>
+                                    <p data-ng-show="inmate.editMode"><a data-ng-click="save(inmate)" href="javascript:;">Save</a> | <a data-ng-click="toggleEdit(inamte)" href="javascript:;">Cancel</a></p>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+@section scripts {
+    @Scripts.Render("~/Scripts/angular.min.js")
+    @Scripts.Render("~/Scripts/app/module.js")
+    @Scripts.Render("~/Scripts/app/service.js")
+    @Scripts.Render("~/Scripts/app/controller.js")
 }
-<hgroup>
-    <h2>@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
-</hgroup>
+
+

@@ -26,7 +26,7 @@
                     <li>@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
                     <li>@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
                     <li>@Ajax.ActionLink("Contact", "Contact", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
-                    <li>@Ajax.ActionLink("Jail Tab", "JailTab", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("Inmates", "JailTab", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
                         <li>@Ajax.ActionLink("RolesAdmin", "Index", "RolesAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>

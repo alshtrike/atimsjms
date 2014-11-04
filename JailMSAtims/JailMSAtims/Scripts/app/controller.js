@@ -16,7 +16,7 @@
 
     //by pressing toggleEdit button ng-click in html, this method will be hit
     $scope.toggleEdit = function () {
-        this.inmates.editMode = !this.inmates.editMode;
+        this.inmate.editMode = !this.inmate.editMode;
     };
 
     //by pressing toggleAdd button ng-click in html, this method will be hit

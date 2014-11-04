@@ -185,9 +185,8 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app\controller.js" />
+    <Content Include="Scripts\app\inmate-controller.js" />
     <Content Include="Scripts\app\module.js" />
-    <Content Include="Scripts\app\service.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />

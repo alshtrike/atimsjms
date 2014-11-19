@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title ATIMS JMS</title>
+    <title>@ViewBag.Title - ATIMS JMS</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,19 +18,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ATIMS JMS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Ajax.ActionLink("ATIMS JMS", "Index", "Home", new AjaxOptions { UpdateTargetId = "content" }, new { @class = "navbar-brand", @id = "button" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("Contact", "Contact", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    <li>@Ajax.ActionLink("Inmates", "JailTab", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                        <li>@Ajax.ActionLink("RolesAdmin", "Index", "RolesAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
+                        <li>@Ajax.ActionLink("UsersAdmin", "Index", "UsersAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" id="content">
         @RenderBody()
         <hr />
         <footer>

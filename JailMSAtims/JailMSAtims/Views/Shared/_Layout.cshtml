@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - ATIMS JMS</title>
-    @Styles.Render("~/Content/css")
+    <link href="~/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,27 +25,12 @@
                 
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Ajax.ActionLink("Home", "Index", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
-                    <li>@Ajax.ActionLink("About", "About", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
-                    <li>@Ajax.ActionLink("Contact", "Contact", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
-                    <li>@Ajax.ActionLink("Inmates", "JailTab", "Home", new AjaxOptions { UpdateTargetId = "content" })</li>
-
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
-                        <li>@Ajax.ActionLink("RolesAdmin", "Index", "RolesAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
-                        <li>@Ajax.ActionLink("UsersAdmin", "Index", "UsersAdmin", new AjaxOptions { UpdateTargetId = "content" })</li>
-                    }
-                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content" id="content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ATIMS JMS</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

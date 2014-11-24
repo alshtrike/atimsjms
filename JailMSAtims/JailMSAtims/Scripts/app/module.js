@@ -1,4 +1,1 @@
-﻿var app;
-(function () {
-    app = angular.module('JailApp', []);
-})();
+﻿var app = angular.module('JailApp', ['ui.bootstrap']);

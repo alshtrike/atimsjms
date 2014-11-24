@@ -169,6 +169,5 @@ C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.Razor.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.WebPages.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.WebPages.Deployment.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.WebPages.Razor.xml
-C:\atimsjms\JailMSAtims\JailMSAtims\obj\Debug\JailMSAtims.csprojResolveAssemblyReference.cache
 C:\atimsjms\JailMSAtims\JailMSAtims\obj\Debug\JailMSAtims.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\obj\Debug\JailMSAtims.pdb

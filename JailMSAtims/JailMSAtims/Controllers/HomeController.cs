@@ -3,7 +3,7 @@
 namespace IdentitySample.Controllers
 {
     public class HomeController : Controller
-    {
+    {[Authorize]
         public ActionResult Index()
         {
             return View();
@@ -17,13 +17,13 @@ namespace IdentitySample.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult JailTab()
+        public ActionResult InmateTab()
         {
             ViewBag.Message = "This is JailTab";
 
             return View();
         }
-
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

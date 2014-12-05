@@ -46,7 +46,7 @@ namespace JailMSAtims.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != inmate.id)
+            if (id != inmate.InmateId)
             {
                 return BadRequest();
             }
@@ -84,7 +84,7 @@ namespace JailMSAtims.Controllers
             db.Inmates.Add(inmate);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = inmate.id }, inmate);
+            return CreatedAtRoute("DefaultApi", new { id = inmate.InmateId }, inmate);
         }
 
         // DELETE: api/Inmates/5
@@ -114,7 +114,7 @@ namespace JailMSAtims.Controllers
 
         private bool InmateExists(int id)
         {
-            return db.Inmates.Count(e => e.id == id) > 0;
+            return db.Inmates.Count(e => e.InmateId == id) > 0;
         }
     }
 }

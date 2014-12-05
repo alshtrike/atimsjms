@@ -4,12 +4,22 @@
 <script src="~/scripts/app/module.js"></script>
 <script src="~/scripts/app/tab-controller.js"></script>
 <script src="~/scripts/app/inmate-controller.js"></script>
+<script src="~/scripts/app/facility-controller.js"></script>
+<script src="~/scripts/app/warrant-controller.js"></script>
+
 <div ng-app="JailApp">
     <div ng-controller="TabController">
         <tabset>
-            <tab heading="Tab1">Content</tab>
             <tab heading="Inmates">
-                <div ng-include="'/Home/InmateTab'">
+                <div ng-include="'/scripts/app/angular-views/InmateTab.html'">
+                </div>
+            </tab>
+            <tab heading="Facilities">
+                <div ng-include="'/scripts/app/angular-views/FacilityTab.html'">
+                </div>
+            </tab>
+            <tab heading="Warrants">
+                <div ng-include="'/scripts/app/angular-views/WarrantTab.html'">
                 </div>
             </tab>
         </tabset>

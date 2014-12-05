@@ -189,9 +189,14 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\angular-views\FacilityTab.html" />
+    <Content Include="Scripts\app\angular-views\InmateTab.html" />
+    <Content Include="Scripts\app\angular-views\WarrantTab.html" />
+    <Content Include="Scripts\app\facility-controller.js" />
     <Content Include="Scripts\app\inmate-controller.js" />
     <Content Include="Scripts\app\module.js" />
     <Content Include="Scripts\app\tab-controller.js" />
+    <Content Include="Scripts\app\warrant-controller.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
@@ -1001,7 +1006,6 @@
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\InmateTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1011,19 +1015,23 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FacilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmatesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Controllers\WarrantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\Facility.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inmate.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Warrant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

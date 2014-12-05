@@ -38,5 +38,9 @@ namespace IdentitySample.Models
         }
 
         public System.Data.Entity.DbSet<JailMSAtims.Models.Inmate> Inmates { get; set; }
+
+        public System.Data.Entity.DbSet<JailMSAtims.Models.Warrant> Warrants { get; set; }
+
+        public System.Data.Entity.DbSet<JailMSAtims.Models.Facility> Facilities { get; set; }
     }
 }

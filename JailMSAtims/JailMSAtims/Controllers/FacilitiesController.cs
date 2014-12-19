@@ -46,7 +46,7 @@ namespace JailMSAtims.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != facility.FacilityId)
+            if (id != facility.Id)
             {
                 return BadRequest();
             }
@@ -84,7 +84,7 @@ namespace JailMSAtims.Controllers
             db.Facilities.Add(facility);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = facility.FacilityId }, facility);
+            return CreatedAtRoute("DefaultApi", new { id = facility.Id }, facility);
         }
 
         // DELETE: api/Facilities/5
@@ -114,7 +114,7 @@ namespace JailMSAtims.Controllers
 
         private bool FacilityExists(int id)
         {
-            return db.Facilities.Count(e => e.FacilityId == id) > 0;
+            return db.Facilities.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -50,7 +50,7 @@
     $scope.save = function () {
         $scope.loading = true;
         var frien = this.inmate;
-        $http.put('/api/Inmates/' + frien.InmateId, frien).success(function (data) {
+        $http.put('/api/Inmates/' + frien.Id, frien).success(function (data) {
             alert("Saved Successfully!!");
             frien.editMode = false;
             $scope.loading = false;
@@ -63,11 +63,11 @@
     //Delete Inmate
     $scope.deleteinmate = function () {
         $scope.loading = true;
-        var id = this.inmate.InmateId;
-        $http.delete('/api/Inmates/' + id).success(function (data) {
+        var id = this.inmate.Id;
+        $http.delete('/api/Inmates/' + id+'/').success(function (data) {
             alert("Deleted Successfully!!");
             $.each($scope.inmates, function (i) {
-                if ($scope.inmates[i].InmateId === id) {
+                if ($scope.inmates[i].Id === id) {
                     $scope.inmates.splice(i, 1);
                     return false;
                 }
@@ -78,4 +78,5 @@
             $scope.loading = false;
         });
     };
+
 });

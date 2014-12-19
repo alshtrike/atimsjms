@@ -26,7 +26,8 @@
                 <div class="form-group">
                     <label for="age" class="col-sm-2 control-label">Facility:</label>
                     <div class="col-sm-10">
-                        <select required data-ng-model="newinmate.Facility" ng-options="facility.Name for facility in facilities track by facility.FacilityId">
+                        <select required data-ng-model="newinmate.FacilityId" ng-options="facility .Id as facility.Name for facility in facilities">
+                            <!--track by facility.ID-->
                             <option value="">--Choose Facility--</option>
                         </select>
                     </div>
@@ -73,8 +74,8 @@
                             <input data-ng-show="inmate.editMode" type="text" data-ng-model="inmate.Age" />
                         </td>
                         <td>
-                            <p data-ng-hide="inmate.editMode">{{ inmate.Facility.Name }}</p>
-                            <select data-ng-show="inmate.editMode" data-ng-model="inmate.Facility" ng-options="facility.Name for facility in facilities track by facility.FacilityId">
+                            <p data-ng-hide="inmate.editMode">{{inmate.Facility.Name}}</p>
+                            <select data-ng-show="inmate.editMode" data-ng-model="inmate.Facility" ng-options="facility.Name for facility in facilities">
                                 <option value="">--Choose Facility--</option>
                             </select>
                         </td>

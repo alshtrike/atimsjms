@@ -42,7 +42,7 @@
     $scope.save = function () {
         $scope.loading = true;
         var frien = this.facility;
-        $http.put('/api/Facilities/' + frien.FacilityId, frien).success(function (data) {
+        $http.put('/api/Facilities/' + frien.Id, frien).success(function (data) {
             alert("Saved Successfully!!");
             frien.editMode = false;
             $scope.loading = false;
@@ -55,11 +55,11 @@
     //Delete Facility
     $scope.deletefacility = function () {
         $scope.loading = true;
-        var id = this.facility.FacilityId;
+        var id = this.facility.Id;
         $http.delete('/api/Facilities/' + id).success(function (data) {
             alert("Deleted Successfully!!");
             $.each($scope.facilities, function (i) {
-                if ($scope.facilities[i].FacilityId === id) {
+                if ($scope.facilities[i].Id === id) {
                     $scope.facilities.splice(i, 1);
                     return false;
                 }

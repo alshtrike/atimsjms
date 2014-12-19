@@ -68,7 +68,7 @@
     $scope.deletewarrant = function () {
         $scope.loading = true;
         var id = this.warrant.id;
-        $http.delete('/api/Warrants/' + id).success(function (dataWarrant) {
+        $http.delete('/odata/Warrants/' + id).success(function (dataWarrant) {
             alert("Deleted Successfully!!");
             $.each($scope.warrants, function (i) {
                 if ($scope.warrants[i].id === id) {

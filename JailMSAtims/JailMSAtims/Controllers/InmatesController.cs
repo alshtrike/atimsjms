@@ -20,19 +20,23 @@ namespace JailMSAtims.Controllers
 
         // GET: api/Inmates
         public IQueryable<Inmate> GetInmates()
-        {
-            return db.Inmates;
+        {  var inmates=db.Inmates;
+           
+            return inmates;
         }
+
 
         // GET: api/Inmates/5
         [ResponseType(typeof(Inmate))]
         public async Task<IHttpActionResult> GetInmate(int id)
         {
             Inmate inmate = await db.Inmates.FindAsync(id);
+
             if (inmate == null)
             {
                 return NotFound();
             }
+           
 
             return Ok(inmate);
         }
@@ -46,7 +50,7 @@ namespace JailMSAtims.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != inmate.id)
+            if (id != inmate.Id)
             {
                 return BadRequest();
             }
@@ -84,7 +88,7 @@ namespace JailMSAtims.Controllers
             db.Inmates.Add(inmate);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = inmate.id }, inmate);
+            return CreatedAtRoute("DefaultApi", new { id = inmate.Id }, inmate);
         }
 
         // DELETE: api/Inmates/5
@@ -114,7 +118,7 @@ namespace JailMSAtims.Controllers
 
         private bool InmateExists(int id)
         {
-            return db.Inmates.Count(e => e.id == id) > 0;
+            return db.Inmates.Count(e => e.Id == id) > 0;
         }
     }
 }

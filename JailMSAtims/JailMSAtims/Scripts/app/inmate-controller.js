@@ -3,6 +3,14 @@
     //declare variable for mainain ajax load and entry or edit mode
     $scope.loading = true;
     $scope.addMode = false;
+    //get a list of all facilities
+
+    $http.get('/api/Facilities/').success(function (data) {
+        $scope.facilities = data;
+    })
+    .error(function () {
+        $scope.error = "An Error has occured while loading posts!";
+    });
 
     //get all inmates information
     $http.get('/api/Inmates/').success(function (data) {
@@ -24,7 +32,7 @@
         $scope.addMode = !$scope.addMode;
     };
 
-    //Insert Inmate Inmate
+    //Insert Inmate
     $scope.add = function () {
         $scope.loading = true;
         $http.post('/api/Inmates/', this.newinmate).success(function (data) {
@@ -33,7 +41,7 @@
             $scope.inmates.push(data);
             $scope.loading = false;
         }).error(function (data) {
-            $scope.error = "An Error has occured while Adding Inmate! " + data;
+            $scope.error = "An Error has occured while Adding Inmate: " + data;
             $scope.loading = false;
         });
     };
@@ -42,7 +50,7 @@
     $scope.save = function () {
         $scope.loading = true;
         var frien = this.inmate;
-        $http.put('/api/Inmates/' + frien.id, frien).success(function (data) {
+        $http.put('/api/Inmates/' + frien.Id, frien).success(function (data) {
             alert("Saved Successfully!!");
             frien.editMode = false;
             $scope.loading = false;
@@ -55,11 +63,11 @@
     //Delete Inmate
     $scope.deleteinmate = function () {
         $scope.loading = true;
-        var id = this.inmate.id;
-        $http.delete('/api/Inmates/' + id).success(function (data) {
+        var id = this.inmate.Id;
+        $http.delete('/api/Inmates/' + id+'/').success(function (data) {
             alert("Deleted Successfully!!");
             $.each($scope.inmates, function (i) {
-                if ($scope.inmates[i].id === id) {
+                if ($scope.inmates[i].Id === id) {
                     $scope.inmates.splice(i, 1);
                     return false;
                 }
@@ -70,4 +78,5 @@
             $scope.loading = false;
         });
     };
+
 });

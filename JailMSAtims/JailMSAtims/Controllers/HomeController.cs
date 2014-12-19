@@ -17,13 +17,6 @@ namespace IdentitySample.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult InmateTab()
-        {
-            ViewBag.Message = "This is JailTab";
-
-            return View();
-        }
-        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

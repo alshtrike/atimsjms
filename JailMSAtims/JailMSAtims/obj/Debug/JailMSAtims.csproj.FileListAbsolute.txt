@@ -15,10 +15,14 @@ C:\JailMSAtims\JailMSAtims\obj\Debug\JailMSAtims.pdb
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\JailMSAtims.dll.config
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\JailMSAtims.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\JailMSAtims.pdb
+C:\atimsjms\JailMSAtims\JailMSAtims\bin\EntityFramework.dll
+C:\atimsjms\JailMSAtims\JailMSAtims\bin\EntityFramework.SqlServer.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\Newtonsoft.Json.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Net.Http.Formatting.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.Http.dll
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.Http.WebHost.dll
+C:\atimsjms\JailMSAtims\JailMSAtims\bin\EntityFramework.xml
+C:\atimsjms\JailMSAtims\JailMSAtims\bin\EntityFramework.SqlServer.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\Newtonsoft.Json.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Net.Http.Formatting.xml
 C:\atimsjms\JailMSAtims\JailMSAtims\bin\System.Web.Http.xml

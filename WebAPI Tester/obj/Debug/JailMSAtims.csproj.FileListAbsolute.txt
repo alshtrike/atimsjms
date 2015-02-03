@@ -1,0 +1,18 @@
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\WebAPI Tester.dll.config
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\WebAPI Tester.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\WebAPI Tester.pdb
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\EntityFramework.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\EntityFramework.SqlServer.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\Newtonsoft.Json.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Net.Http.Formatting.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Web.Http.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Web.Http.WebHost.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\EntityFramework.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\EntityFramework.SqlServer.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\Newtonsoft.Json.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Net.Http.Formatting.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Web.Http.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\bin\System.Web.Http.WebHost.xml
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\obj\Debug\JailMSAtims.csprojResolveAssemblyReference.cache
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\obj\Debug\WebAPI Tester.dll
+C:\Dropbox\atimsjms-Collin\WebAPI Tester\obj\Debug\WebAPI Tester.pdb

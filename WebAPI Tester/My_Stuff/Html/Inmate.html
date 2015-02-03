@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <div class="row">
+        <!-- Main row -->
+        <section class="col-lg-7 connectedSortable">
+            <!-- Left col -->
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="box box-success">
+                <!-- Inmates box -->
+                <div class="box-header">
+                    <i class="fa fa-comments-o"></i>
+                    <h3 class="box-title">Inmates</h3>
+                    <div class="box-tools pull-right" data-toggle="tooltip" title="Status">
+                        <div class="btn-group" data-toggle="btn-toggle">
+                            <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-green"></i></button>
+                            <button type="button" class="btn btn-default btn-sm active"><i class="fa fa-square text-red"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-body inmates" id="inmates-box">
+                    <!-- MY CODE BELOW -->
+                    <div><h2>All Inmates</h2><ul id="inmates" /></div>
+                    <div>
+                        <h2>Search by ID</h2>
+                        <input type="number" id="inmateID" size="5" />
+                        <input type="button" value="Search" onclick="find();" />
+                        <p id="inmate" />
+                    </div>
+
+                    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+                    <script src="My_Stuff/Scripts/InmateScript.js"></script>
+                </div><!-- /.inmates-box -->
+            </div><!-- /.box (inmates box) -->
+        </section>
+    </div><!-- /.row (main row) -->
+</body>
+</html>

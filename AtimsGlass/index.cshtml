@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html ng-app="glassHouseApp" ng-controller="GlassHouseController as glassCtrl">
@@ -21,90 +20,83 @@
 </head>
 
 <body>
-
     <!-- Header Nav Bar -->
     <nav class="navbar navbar-inverse navbar-over">
         <div class="container-fluid">
-            <div class="navbar-header pull-left">
-                <span class="navbar-logo">Atims JMS</span>
-                <button type="button" class="btn navbar-btn" href="#menu-toggle" id="menu-toggle">Toggle Menu</button>
+            <div class="navbar-header navbar-logo pull-left">
+                Atims JMS
             </div>
+            <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle">
+                {{menuToggleText}}
+            </button>
             <div class="navbar-header pull-right">
                 <span class="dropdown" id="messages-dropdown">
+                    <!-- TODO -->
                     <a class="btn navbar-btn" href="#" data-toggle="dropdown">
                         X Messages
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                        <li class="header"> Messages </li>
-                        <li><ul class="dropdown-inner-menu">
-                            <li><a href="#">
-                                .. messages here ..
-                            </a></li>
-                        </ul></li>
-                        <li><a class="footer" href="#">
+                        <li class="dropdown-header">
+                            Messages
+                        </li>
+                        <li><ul class="dropdown-textlink"><li><a href="#">
+                            .. messages here ..
+                        </a></li></ul></li>
+                        <li><a class="dropdown-footer" href="#">
                             See All Messages
                         </a></li>
                     </ul>
                 </span>
-                <span class="dropdown"> <!-- TODO -->
+                <span class="dropdown">
+                    <!-- TODO -->
                     <a class="btn navbar-btn" href="#">X Notifications</a>
                 </span>
-                <span class="dropdown"> <!-- TODO -->
+                <span class="dropdown">
+                    <!-- TODO -->
                     <a class="btn navbar-btn" href="#">X Tasks</a>
                 </span>
             </div>
         </div>
     </nav>
-    
+
     <!-- Module Nav Bar -->
     <nav class="nav navbar-default navbar-under">
         <div class="nav navbar-nav">
-            <span class="dropdown col-md-1" ng-repeat="module in moduleMenu">
-                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+            <span class="dropdown" ng-repeat="module in moduleMenu">
+                <a class="btn navbar-btn" data-toggle="dropdown">
                     {{module.name}}
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                    <li ng-repeat="submodule in module.submodules"></li>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-navlink" ng-repeat="subModule in module.subModuleMenu"
+                            ng-click="goToSubModule(module.name,subModule.name)">
+                        {{subModule.name}}
+                    </li>
                 </ul>
             </span>
         </div>
     </nav>
-        
-    <div id="wrapper">
 
+    <div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    {{ selectedModule }}
+                    {{ selectedModuleName }}
                 </li>
-                <li><a href="#">
-                    Submodule 1
-                </a></li>
-                <li><a href="#">
-                    Submodule 2
-                </a></li>
+                <li ng-repeat="subModule in selectedModule.subModuleMenu" ng-click="goToSubModule(selectedModule.name,subModule.name)">
+                    {{ subModule.name }}
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid page-padding">
-                <h1>{{ theoutput }}</h1>
-            </div>
+            <div class="container-fluid page-padding" ng-include="page" onload="pageLoaded()"></div>
+            {{page}}
         </div>
         <!-- /#page-content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-    <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
 </body>
 
 </html>

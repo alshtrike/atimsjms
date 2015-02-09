@@ -4,13 +4,14 @@
     border-radius: 0;
     border-top: 5px solid #333333;
     border-bottom: 0 solid;
+    z-index: 1050;
 }
 
 .navbar-under {
     padding: 0 0 0 0;
     background-color: #373737;
-    z-index: 1020;
     border-bottom: 5px solid #272727;
+    z-index: 1040;
 }
 
 .navbar-logo {
@@ -52,30 +53,49 @@
 
 /* Dropdown Menus*/
 .dropdown-menu {
+    z-index: 2000;
+    min-width: 0px;
     padding: 0 0 0 0;
 }
 
-.dropdown-inner-menu{
+.dropdown-header {
+    background-color: #ffffff;
+    padding: 7px 10px;
+    border-bottom: 1px solid #f4f4f4;
+    color: #444444;
+    font-size: 14px;
+}
+
+.dropdown-textlink{
     min-width: 300px;
+    border-bottom: 1px solid #EEEEEE;
     padding: 10px 10px 10px 10px;
     list-style-type: none;
 }
 
-.dropdown-menu .header {
-  background-color: #ffffff;
-  padding: 7px 10px;
-  border-bottom: 1px solid #f4f4f4;
-  color: #444444;
-  font-size: 14px;
+.dropdown-navlink{
+    min-width: 120px;
+    background-color: #F4F4F4;
+    padding: 2px 10px 2px 10px;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    color: #444444;
+    text-align: center;
+    cursor: pointer;
 }
 
-.dropdown-menu .footer{
-  font-size: 12px;
-  background-color: #f4f4f4;
-  padding: 7px 10px;
-  border-bottom: 1px solid #eeeeee;
-  color: #444444;
-  text-align: center;
+.dropdown-navlink:hover{
+    background-color: #FFFFFF;
+}
+
+.dropdown-footer{
+    font-size: 12px;
+    background-color: #f4f4f4;
+    padding: 7px 10px 7px 10px;
+    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #EEEEEE;
+    color: #444444;
+    text-align: center;
 }
 /*End Dropdown menus*/
     
@@ -95,7 +115,7 @@
 }
 
 #sidebar-wrapper {
-    z-index: 1000;
+    z-index: 1020;
     position: fixed;
     left: 200px;
     width: 0;
@@ -117,7 +137,7 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    background-color: FFFFFF;
+    background-color: #FFFFFF;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -128,7 +148,7 @@
 /* Sidebar Styles */
 
 .sidebar-nav {
-    position: absolute;
+    position: relative;
     top: 0;
     width: 190px;
     margin: 0;
@@ -139,22 +159,20 @@
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
-}
-
-.sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: #111111;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li:hover {
     text-decoration: none;
     color: #000000;
     background: #EEEEEE;
+    cursor: pointer;
 }
 
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
+.sidebar-nav li:active,
+.sidebar-nav li:focus {
     text-decoration: none;
 }
 

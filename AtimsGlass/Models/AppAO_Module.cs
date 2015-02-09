@@ -1,16 +1,16 @@
-﻿using System.Data.Entity;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace AtimsGlass.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-    public class AppAO_Module
+    public partial class AppAO_Module
     {
         public AppAO_Module()
         {
-            AppAO_SubModule = new HashSet<AppAO_SubModule>( );
+            AppAO_SubModule = new HashSet<AppAO_SubModule>();
         }
 
         [Key]
@@ -42,5 +42,4 @@ namespace AtimsGlass.Models
 
         public virtual ICollection<AppAO_SubModule> AppAO_SubModule { get; set; }
     }
-
 }

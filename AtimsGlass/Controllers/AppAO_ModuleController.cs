@@ -12,28 +12,47 @@ using AtimsGlass.Models;
 
 namespace AtimsGlass.Controllers
 {
+    // @TODO: Ask Client if Visible modules should be checked here or in angular
+    // @TODO: Implement access control when Users are implemented
     public class AppAO_ModuleController : ApiController
     {
         private JMS db = new JMS();
 
+        // Returns ALL AppAO_Modules.
+        //   This is not the normal case as certain modules are intended
+        //   to be used together based on their AppAO_id
         // GET: api/AppAO_Module
         public IQueryable<AppAO_Module> GetAppAO_Module()
         {
+            // @TODO: Implement License Checking
+            //   This is (semi) important as once a module is loaded into
+            //   angular it can be reached using a URL. 
             return db.AppAO_Module;
         }
 
+
+        // Using an ID returns a set based on AppAO_id rather than the normal
+        //   behavior of a specific AppAO_Module based on the key (AppAO_Module_id)
         // GET: api/AppAO_Module/5
         [ResponseType(typeof(AppAO_Module))]
         public IHttpActionResult GetAppAO_Module(int id)
         {
-            AppAO_Module appAO_Module = db.AppAO_Module.Find(id);
-            if (appAO_Module == null)
-            {
+            IQueryable<AppAO_Module> appAO_Module = db.AppAO_Module.Where(b => b.AppAO_id == id);
+            // @TODO: Implement License Checking
+            if (appAO_Module == null){
                 return NotFound();
             }
 
             return Ok(appAO_Module);
         }
+
+        /*~* /
+        // Changing and Deleting AppAO_Module Objects
+        //   This code (PutAppAO_Module(), PutAppAO_Module(id), DeleteAppAO_Module(id)
+        //   allows changing modules from an external API. This behavior is not something we
+        //   want at the moment, but it's here just in case. This code being removed will not
+        //   interfere with C# code from saving AppAO_Module objects, it will only stop
+        //   external WebAPI calls from changing them.
 
         // PUT: api/AppAO_Module/5
         [ResponseType(typeof(void))]
@@ -115,6 +134,9 @@ namespace AtimsGlass.Controllers
 
             return Ok(appAO_Module);
         }
+        
+        // End Changing and Deleting AppAO_Module Objects
+        /*~*/
 
         protected override void Dispose(bool disposing)
         {
@@ -129,5 +151,6 @@ namespace AtimsGlass.Controllers
         {
             return db.AppAO_Module.Count(e => e.AppAO_Module_id == id) > 0;
         }
+         
     }
 }

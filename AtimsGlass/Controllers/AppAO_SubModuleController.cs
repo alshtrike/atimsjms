@@ -20,13 +20,15 @@ namespace AtimsGlass.Controllers
         public IQueryable<AppAO_SubModule> GetAppAO_SubModule()
         {
             return db.AppAO_SubModule;
+            //return db.AppAO_SubModule.Where(b => b.AppAO_Module_id < 500 && b.AppAO_Module_id>400);
         }
 
         // GET: api/AppAO_SubModule/5
         [ResponseType(typeof(AppAO_SubModule))]
         public IHttpActionResult GetAppAO_SubModule(int id)
         {
-            AppAO_SubModule appAO_SubModule = db.AppAO_SubModule.Find(id);
+            IQueryable<AppAO_SubModule> appAO_SubModule = db.AppAO_SubModule.Where(b => b.AppAO_Module.AppAO_id == id);
+            // AppAO_SubModule appAO_SubModule = db.AppAO_SubModule.Find(id);
             if (appAO_SubModule == null)
             {
                 return NotFound();
@@ -35,6 +37,15 @@ namespace AtimsGlass.Controllers
             return Ok(appAO_SubModule);
         }
 
+
+        /*~* /
+        // Changing and Deleting AppAO_SubModule Objects
+        //   This code (PutAppAO_SubModule(), PutAppAO_SubModule(id), DeleteAppAO_SubModule(id)
+        //   allows changing subModules from an external API. This behavior is not something we
+        //   want at the moment, but it's here just in case. This code being removed will not
+        //   interfere with C# code from saving AppAO_Module objects, it will only stop
+        //   external WebAPI calls from changing them. 
+        
         // PUT: api/AppAO_SubModule/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAppAO_SubModule(int id, AppAO_SubModule appAO_SubModule)
@@ -115,6 +126,10 @@ namespace AtimsGlass.Controllers
 
             return Ok(appAO_SubModule);
         }
+        
+        // End Changing and Deleting AppAO_SubModule Objects
+        /*~*/
+
 
         protected override void Dispose(bool disposing)
         {

@@ -49,8 +49,9 @@ body {
 
 
 /* Navbar Menus */
-.navbar {
+.navbar-over {
     margin: 0 0 0 0;
+    padding: 1px 10px 0px 10px;
     border-radius: 0;
     border-top: 5px solid #333333;
     border-bottom: 0 solid;
@@ -66,18 +67,16 @@ body {
 
 .navbar-logo {
     float: left;
-    height: 50px;
-    padding: 5px 25px 15px 15px;
+    padding: 4px 25px 0px 15px;
     color: #EEEEEE;
     font-weight: bolder;
     font-size: 26px;
 }
 
-.navbar-under .nav,
-.navbar-under .nav span{
+.navbar-under .nav{
     float: none;
     text-align: center;
-    padding: 0 5px 0 5px;
+    padding: 0px 5px 0px 5px;
 }
 
 .navbar-inverse .navbar-btn,
@@ -85,8 +84,7 @@ body {
     background-color: #222222;
     border-color: #333333;
     color: #CCCCCC;
-    margin-top: 7px;
-    margin-bottom: 5px;
+    margin: 5px 3px 5px 3px;
 }
 
 .navbar-inverse .navbar-btn:hover {
@@ -102,10 +100,14 @@ body {
 
 
 /* Dropdown Menus*/
+.dropdown {
+    display: inline-block;
+}
+
 .dropdown-menu {
     z-index: 2000;
     min-width: 0px;
-    margin-top: 12px;
+    margin-top: -4px;
     padding: 0 0 0 0;
     border: 2px solid #DDDDDD;
     border-radius: 2px;

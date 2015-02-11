@@ -23,7 +23,6 @@
     <div id="glass-loading-hider">
         <!-- Header Nav Bar -->
         <nav class="navbar navbar-inverse navbar-over">
-            <div class="container-fluid">
                 <div class="navbar-header navbar-logo pull-left">
                     Atims JMS
                 </div>
@@ -31,7 +30,7 @@
                     {{menuToggleText}}
                 </button>
                 <div class="navbar-header pull-right">
-                    <span class="dropdown" id="messages-dropdown">
+                    <div class="dropdown" id="messages-dropdown">
                         <!-- TODO -->
                         <a class="btn navbar-btn" href="#" data-toggle="dropdown">
                             X Messages
@@ -47,23 +46,48 @@
                                 See All Messages
                             </a></li>
                         </ul>
-                    </span>
-                    <span class="dropdown">
+                    </div>
+                    <div class="dropdown">
                         <!-- TODO -->
-                        <a class="btn navbar-btn" href="#">X Notifications</a>
-                    </span>
-                    <span class="dropdown">
+                        <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+                            X Notifications
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li class="dropdown-header">
+                                Notifications
+                            </li>
+                            <li><ul class="dropdown-textlink"><li><a href="#">
+                                .. notifications here ..
+                            </a></li></ul></li>
+                            <li><a class="dropdown-footer" href="#">
+                                See All Notifications
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
                         <!-- TODO -->
-                        <a class="btn navbar-btn" href="#">X Tasks</a>
-                    </span>
+                        <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+                            X Tasks
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li class="dropdown-header">
+                                Tasks
+                            </li>
+                            <li><ul class="dropdown-textlink"><li><a href="#">
+                                .. tasks here ..
+                            </a></li></ul></li>
+                            <li><a class="dropdown-footer" href="#">
+                                See All Tasks
+                            </a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
         </nav>
 
         <!-- Module Nav Bar -->
         <nav class="nav navbar-default navbar-under">
             <div class="nav navbar-nav">
-                <span class="dropdown" ng-repeat="module in moduleMenu">
+                <div class="dropdown" ng-repeat="module in moduleMenu">
                     <a class="btn navbar-btn" data-toggle="dropdown">
                         {{module.name}}
                     </a>
@@ -73,7 +97,7 @@
                             {{subModule.name}}
                         </li>
                     </ul>
-                </span>
+                </div>
             </div>
         </nav>
 

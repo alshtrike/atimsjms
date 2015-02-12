@@ -104,13 +104,13 @@ var glassHouseController = function ($scope, $http, $rootScope, $location) {
     //   @TODO: Success Handling (in conjunction with implementing loading screen?)
     var loadAppSuccess = function( ){
         $scope.glassLoaderToggle( );
+        resizeHandler( );
         urlChangeEvent( null );
-        console.log( "Here I am" );
     }
     // Called when an exception is thrown while trying to load the requested app
     //   @TODO: Failure Handling (maybe go to 404 page?)
     var loadAppFailed = function( data ){
-        // I'm empty, someone fix me :D
+        // @TODO: I do nothing, someone fix me :D
         console.log( "Failed: " + data );
     }
 
@@ -296,14 +296,20 @@ var glassHouseController = function ($scope, $http, $rootScope, $location) {
 
     // Displays the 404 error page
     //   @ TODO: Implement this (See above - No 404 page exists as of writing this)
-    var display404 = function ( errorInfo ){
-        // I do nothing, someone fix me :D
+    var display404 = function (errorInfo){
+        // @TODO: I do nothing, someone fix me :D
     }
+
+    // $scope.pageLoaded is called after $scope.page has been successfully loaded
+    //   with ng-include
+    $scope.pageLoaded = function ( ){
+        // @TODO: I do nothing, someone fix me :D
+    };
     
     /// URL Handling
     // goToSubModule(moduleName, subModuleName) is used inside the web pages for link
     //   urls. This is equivalent to href="#/moduleName/subModuleName/"
-    $scope.goToSubModule = function(moduleName, subModuleName){
+    $scope.goToSubModule = function (moduleName, subModuleName){
         $location.path( "/" + moduleName + "/" + subModuleName );
     }
     // goToPath(path) is used inside the web pages to set the url directly, instead of
@@ -334,10 +340,24 @@ var glassHouseController = function ($scope, $http, $rootScope, $location) {
     $scope.menuToggle = function( ){
         $("#wrapper").toggleClass("toggled");
     };
+    // Loading Splash Toggle
     $scope.glassLoaderToggle = function( ){
         $("#glass-loading").toggleClass("toggled");
         $("#glass-loading-hider").toggleClass("toggled");
     }
+    // Window Resize Fixed Position Handler
+    var resizeHandler = function( ){
+        // Get navbar-over and navbar-under
+        var navbarOver = $(".navbar-over");
+        // Get bottom of navbarOver
+        var navbarUnder = $(".navbar-under");
+        // Set navbar-under flush against navbar-over
+        navbarUnder.css("top", navbarOver.offset().top + navbarOver.outerHeight() + "px");
+        // Set wrapper flush against navbarUnder
+        $("#wrapper").css("top", ( navbarUnder.offset().top + navbarUnder.outerHeight() ) + "px");
+        console.log( navbarOver.offset().top + navbarOver.outerHeight() + "px" );
+    }
+    $( window ).resize( resizeHandler );
 
 
 

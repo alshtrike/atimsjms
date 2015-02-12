@@ -21,108 +21,103 @@
 <body>
     <div id="glass-loading"></div>
     <div id="glass-loading-hider">
-        <!-- Header Nav Bar -->
-        <nav class="navbar navbar-inverse navbar-over">
-                <div class="navbar-header navbar-logo pull-left">
-                    Atims JMS
-                </div>
-                <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle">
-                    {{menuToggleText}}
-                </button>
-                <div class="navbar-header pull-right">
-                    <div class="dropdown" id="messages-dropdown">
-                        <!-- TODO -->
-                        <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                            X Messages
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li class="dropdown-header">
-                                Messages
-                            </li>
-                            <li><ul class="dropdown-textlink"><li><a href="#">
-                                .. messages here ..
-                            </a></li></ul></li>
-                            <li><a class="dropdown-footer" href="#">
-                                See All Messages
-                            </a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <!-- TODO -->
-                        <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                            X Notifications
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li class="dropdown-header">
-                                Notifications
-                            </li>
-                            <li><ul class="dropdown-textlink"><li><a href="#">
-                                .. notifications here ..
-                            </a></li></ul></li>
-                            <li><a class="dropdown-footer" href="#">
-                                See All Notifications
-                            </a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <!-- TODO -->
-                        <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                            X Tasks
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li class="dropdown-header">
-                                Tasks
-                            </li>
-                            <li><ul class="dropdown-textlink"><li><a href="#">
-                                .. tasks here ..
-                            </a></li></ul></li>
-                            <li><a class="dropdown-footer" href="#">
-                                See All Tasks
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
-        </nav>
-
-        <!-- Module Nav Bar -->
-        <nav class="nav navbar-default navbar-under">
-            <div class="nav navbar-nav">
-                <div class="dropdown" ng-repeat="module in moduleMenu">
-                    <a class="btn navbar-btn" data-toggle="dropdown">
-                        {{module.name}}
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li class="dropdown-navlink" ng-repeat="subModule in module.subModuleMenu"
-                                ng-click="goToSubModule(module.name, subModule.name)">
-                            {{subModule.name}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div id="wrapper">
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-brand">
-                        {{ selectedModule.name }}
+    <!-- Header Nav Bar -->
+    <nav class="navbar navbar-inverse navbar-over">
+        <div class="navbar-header navbar-logo pull-left">
+            Atims JMS
+        </div>
+        <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle">
+            {{menuToggleText}}
+        </button>
+        <!-- TODO: Combine into directive for use with ng-repeat -->
+        <div class="navbar-header pull-right">
+            <div class="dropdown" id="messages-dropdown">
+                <!-- TODO -->
+                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+                    X Messages
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li class="dropdown-header">
+                        Messages
                     </li>
-                    <li ng-repeat="subModule in selectedModule.subModuleMenu" ng-class="{'sidebar-nav-selected': selectedModule.subModuleMenu[$index] == selectedSubModule}" ng-click="goToSubModule(selectedModule.name,subModule.name)">
-                        {{ subModule.name }}
-                    </li>
+                    <li><ul class="dropdown-textlink"><li><a href="#">
+                        .. messages here ..
+                    </a></li></ul></li>
+                    <li><a class="dropdown-footer" href="#">
+                        See All Messages
+                    </a></li>
                 </ul>
             </div>
-            <!-- /#sidebar-wrapper -->
-            <!-- Page Content -->
-            <div id="page-content-wrapper">
-                <div class="container-fluid page-padding" ng-include="page" onload="pageLoaded()"></div>
-                <p> Page: {{page}}</p>
+            <div class="dropdown">
+                <!-- TODO -->
+                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+                    X Notifications
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li class="dropdown-header">
+                        Notifications
+                    </li>
+                    <li><ul class="dropdown-textlink"><li><a href="#">
+                        .. notifications here ..
+                    </a></li></ul></li>
+                    <li><a class="dropdown-footer" href="#">
+                        See All Notifications
+                    </a></li>
+                </ul>
             </div>
-            <!-- /#page-content-wrapper -->
+            <div class="dropdown">
+                <!-- TODO -->
+                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
+                    X Tasks
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    <li class="dropdown-header">
+                        Tasks
+                    </li>
+                    <li><ul class="dropdown-textlink"><li><a href="#">
+                        .. tasks here ..
+                    </a></li></ul></li>
+                    <li><a class="dropdown-footer" href="#">
+                        See All Tasks
+                    </a></li>
+                </ul>
+            </div>
         </div>
-        <!-- /#wrapper -->
-        <div class="style-footer"></div>
+    </nav>
+
+    <!-- Module Nav Bar -->
+    <nav class="nav navbar-under">
+        <div class="dropdown" ng-repeat="module in moduleMenu">
+            <button class="btn navbar-btn" data-toggle="dropdown">
+                {{module.name}}
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-navlink" ng-repeat="subModule in module.subModuleMenu"
+                        ng-click="goToSubModule(module.name, subModule.name)">
+                    {{subModule.name}}
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    {{ selectedModule.name }}
+                </li>
+                <li ng-repeat="subModule in selectedModule.subModuleMenu" ng-class="{'sidebar-nav-selected': selectedModule.subModuleMenu[$index] == selectedSubModule}" ng-click="goToSubModule(selectedModule.name,subModule.name)">
+                    {{ subModule.name }}
+                </li>
+            </ul>
+        </div>
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid page-padding" ng-include="page" onload="pageLoaded()"></div>
+            <p> Page: {{page}}</p>
+        </div>
+    </div>
     </div>
 </body>
 

@@ -132,10 +132,18 @@
     <Content Include="Content\glass-loader.gif" />
     <Content Include="Content\ui-grid-unstable.css" />
     <Content Include="Content\ui-grid-unstable.min.css" />
+    <Content Include="css\jasmine.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
+    <Content Include="scripts\jasmine-html.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scripts\jasmine.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\DefaultTest.js" />
     <Content Include="tests\query-test.js" />
     <Content Include="scripts\atims-web-main.js" />
     <Content Include="Global.asax" />
@@ -243,6 +251,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="..\packages\KarmaGruntJSUnit.MSBuild.1.0.6\build\KarmaGruntJSUnit.MSBuild.Targets" Condition="Exists('..\packages\KarmaGruntJSUnit.MSBuild.1.0.6\build\KarmaGruntJSUnit.MSBuild.Targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

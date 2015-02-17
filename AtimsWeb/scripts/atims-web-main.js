@@ -156,6 +156,8 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
         $scope.selectedSubModule = subModule;
 
         // Try to go to the subModule's page
+        $scope.selectedSubModule.Usercontrol = $scope.selectedSubModule.Usercontrol ||
+            "Views/" + encodeURI(moduleName) + "/" + encodeURI(subModuleName) + ".html";
         displayPage($scope.selectedSubModule.Usercontrol);
     };
     // Displays the users personal home page
@@ -220,11 +222,11 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     $scope.menuToggleText = "<<";
     $scope.menuToggle = function ( ){
         $("#wrapper").toggleClass("toggled");
-        $scope.menuToggleText = ($scope.menuToggleText == "<<")? ">>" : "<<";
+        $scope.menuToggleText = ($scope.menuToggleText === "<<")? ">>" : "<<";
     };
     // Shows or Hides the full page loading screen
     $scope.appLoaderShow = function (toShow) {
-        if ($("#loading").hasClass("toggled") == toShow  ) {
+        if ($("#loading").hasClass("toggled") === toShow  ) {
             $("#loading").toggleClass("toggled");
             $("#loading-hider").toggleClass("toggled");
         }

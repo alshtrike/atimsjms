@@ -10,7 +10,7 @@ namespace AtimsWeb.Models
     {
         public AppAO_Module()
         {
-            AppAO_SubModule = new HashSet<AppAO_SubModule>();
+            AppAO_SubModules = new HashSet<AppAO_SubModule>();
         }
 
         [Key]
@@ -44,6 +44,6 @@ namespace AtimsWeb.Models
         [StringLength(150)]
         public string AppAO_Module_ToolTip { get; set; }
 
-        public virtual ICollection<AppAO_SubModule> AppAO_SubModule { get; set; }
+        public virtual ICollection<AppAO_SubModule> AppAO_SubModules { get; set; }
     }
 }

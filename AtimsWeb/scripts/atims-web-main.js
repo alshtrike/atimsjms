@@ -96,18 +96,14 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
             var module = rawMenuList[i];
             module.subModuleMenu = [];
             module.subModuleNameMap = {};
-            $scope.moduleNameMap[module.AppAO_Module_Name] = module;
-            if (module.AppAO_Module_visible == 1) {
-                $scope.moduleMenu.push(module);
-            }
+            $scope.moduleNameMap[module.Name] = module;
+            $scope.moduleMenu.push(module);
             // Add each subModule to its parent's subModuleNameMap, and if visible
             //   to its parent's subModuleMenu.
-            for (var j = 0; j < module.AppAO_SubModule.length; j++) {
-                var subModule = module.AppAO_SubModule[j];
-                if (subModule.AppAO_SubModule_visible) {
-                    module.subModuleMenu.push(subModule);
-                }
-                module.subModuleNameMap[subModule.AppAO_SubModule_Name] = subModule;
+            for (var j = 0; j < module.SubModules.length; j++) {
+                var subModule = module.SubModules[j];
+                module.subModuleMenu.push(subModule);
+                module.subModuleNameMap[subModule.Name] = subModule;
             }
         }
         // At this point: App, Modules, and SubModules have been successfully loaded
@@ -160,7 +156,7 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
         $scope.selectedSubModule = subModule;
 
         // Try to go to the subModule's page
-        displayPage($scope.selectedSubModule.AppAO_SubModule_usercontrol);
+        displayPage($scope.selectedSubModule.Usercontrol);
     };
     // Displays the users personal home page
     //   @ TODO: Implement once users are implemented

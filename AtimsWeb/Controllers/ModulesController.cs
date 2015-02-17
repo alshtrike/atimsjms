@@ -37,7 +37,8 @@ namespace AtimsWeb.Controllers
                 orderby mod.AppAO_Module_order
                 select new ModulesVM() {
                     Name = mod.AppAO_Module_Name, ToolTip = mod.AppAO_Module_ToolTip,
-                    SubModules = mod.AppAO_SubModules.Select(sm => new SubModuleVM() {
+                    SubModules = mod.AppAO_SubModules.Where(sm => sm.AppAO_SubModule_visible == 1).
+                    Select(sm => new SubModuleVM() {
                         Name = sm.AppAO_SubModule_Name, Usercontrol = sm.AppAO_SubModule_usercontrol,
                         Help = sm.AppAO_SubModule_Help, ToolTip = sm.AppAO_SubModule_ToolTip
                     }).ToList()

@@ -5,13 +5,12 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '../AtimsWeb/',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
 
     // list of files / patterns to load in the browser
     files: [
@@ -39,7 +38,7 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 8080,
+    port: 9999,
 
 
     // enable / disable colors in the output (reporters and logs)

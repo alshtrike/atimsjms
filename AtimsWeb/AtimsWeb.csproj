@@ -143,7 +143,7 @@
     <Content Include="scripts\jasmine.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestScripts\DefaultTest.js" />
+    <Content Include="TestScripts\defTestSpec.js" />
     <Content Include="tests\query-test.js" />
     <Content Include="scripts\atims-web-main.js" />
     <Content Include="Global.asax" />
@@ -184,6 +184,8 @@
     <Compile Include="Models\JMS.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ModulesVM.cs" />
+    <Compile Include="ViewModels\SubModuleVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -251,7 +253,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <Import Project="..\packages\KarmaGruntJSUnit.MSBuild.1.0.6\build\KarmaGruntJSUnit.MSBuild.Targets" Condition="Exists('..\packages\KarmaGruntJSUnit.MSBuild.1.0.6\build\KarmaGruntJSUnit.MSBuild.Targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

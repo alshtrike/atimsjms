@@ -19,7 +19,7 @@ namespace AtimsWeb.Controllers
     // @TODO: Implement 500 Error in the event the database is unreachable (Exception occured 2015/02/06)
     public class ModulesController : ApiController
     {
-        private JMS db = new JMS();
+        private readonly JMS db = new JMS();
 
         // HTTP GET ~/api/Modules/4
         // Using a parameter returns a set of modules based on which App is being
@@ -37,7 +37,7 @@ namespace AtimsWeb.Controllers
                 orderby mod.AppAO_Module_order
                 select new ModulesVM() {
                     Name = mod.AppAO_Module_Name, ToolTip = mod.AppAO_Module_ToolTip,
-                    SubModules = mod.AppAO_SubModules.Where(sm => sm.AppAO_SubModule_visible == 1).
+                    SubModules = mod.AppAO_SubModules.Where(sm => sm.AppAO_SubModule_visible == 1).OrderBy(sm => sm.AppAO_SubModule_order).
                     Select(sm => new SubModuleVM() {
                         Name = sm.AppAO_SubModule_Name, Usercontrol = sm.AppAO_SubModule_usercontrol,
                         Help = sm.AppAO_SubModule_Help, ToolTip = sm.AppAO_SubModule_ToolTip

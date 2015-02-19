@@ -21,7 +21,7 @@ body {
 }
 
 #loading-hider {
-    will-change: opacity;
+    /* will-change: opacity; */
     -webkit-transition: all 2s;
     -moz-transition: all 2s;
     -o-transition: all 2s;
@@ -40,7 +40,7 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    padding: 1px 10px 0px 10px;
+    padding: 1px 10px 0 10px;
     background-color: #222222;
     border-radius: 0;
     border-top: 5px solid #333333;
@@ -54,7 +54,7 @@ body {
     left: 0;
     right: 0;
     min-height: 47px;
-    padding: 0px 5px 0px 5px;
+    padding: 0 5px 0 5px;
     background-color: #373737;
     border-bottom: 5px solid #272727;
     text-align: center;
@@ -63,7 +63,7 @@ body {
 
 .navbar-logo {
     float: left;
-    padding: 4px 25px 0px 15px;
+    padding: 4px 25px 0 15px;
     color: #EEEEEE;
     font-weight: bolder;
     font-size: 26px;
@@ -96,7 +96,7 @@ body {
 
 .dropdown-menu {
     z-index: 2000;
-    min-width: 0px;
+    min-width: 0;
     margin-top: -4px;
     margin-left: -20px;
     padding: 0 0 0 0;
@@ -180,7 +180,7 @@ body {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 0px;
+    width: 0;
 }
 
 #page-content-wrapper {
@@ -205,7 +205,7 @@ body {
 .sidebar-nav {
     width: 170px;
     margin: 0;
-    padding-left: 0px;
+    padding-left: 0;
     list-style: none;
 }
 
@@ -237,6 +237,6 @@ body {
     line-height: 40px;
     text-align: center;
     text-indent: 0;
-    border-top: 0px solid;
+    border-top: 0 solid;
 }
 /* End Sidebar Nav */

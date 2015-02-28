@@ -12,9 +12,11 @@
     .error(function () {
         $scope.error="failed to load inmates"
     });
+
+    /*loads 50 more inmates  as you keep scrolling*/
     $scope.gridOptions.onRegisterApi = function (gridApi) {
         gridApi.infiniteScroll.on.needLoadMoreData($scope, function () {
-            $last = $last + 50;
+            $last = $last + 51;
             $http.get('/api/inmate/'+$last).success(function (data) {
                 $scope.gridOptions.data = $scope.gridOptions.data.concat(data);
                 gridApi.infiniteScroll.dataLoaded();

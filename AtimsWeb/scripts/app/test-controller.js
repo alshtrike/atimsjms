@@ -1,31 +1,29 @@
 ﻿atimsMainApp.controller('testController',  function ($scope,$http){
+    $scope.gridOptions = {};
+    $last = 50;
+    /*specify percentage when lazy loading should trigger*/
+    $scope.gridOptions.infiniteScrollPercentage = 15;
 
-   /* $scope.myData = [
-      {
-          "firstName": "Cox",
-          "lastName": "Carney",
-          "company": "Enormo",
-          "employed": true
-      },
-      {
-          "firstName": "Lorraine",
-          "lastName": "Wise",
-          "company": "Comveyer",
-          "employed": false
-      },
-      {
-          "firstName": "Nancy",
-          "lastName": "Waters",
-          "company": "Fuelton",
-          "employed": false
-      }
-    ];*/
-    $http.get('/api/inmate/50').success(function (data) {
-        $scope.myData = data;
+    /*loads the first 50 inmates*/
+    $http.get('/api/inmate/'+$last).success(function (data) {
+        $scope.gridOptions.data = data;
 
     })
     .error(function () {
         $scope.error="failed to load inmates"
     });
-   
+    $scope.gridOptions.onRegisterApi = function (gridApi) {
+        gridApi.infiniteScroll.on.needLoadMoreData($scope, function () {
+            $last = $last + 50;
+            $http.get('/api/inmate/'+$last).success(function (data) {
+                $scope.gridOptions.data = $scope.gridOptions.data.concat(data);
+                gridApi.infiniteScroll.dataLoaded();
+
+            })
+    .error(function () {
+        gridApi.infiniteScroll.dataLoaded();
+    });
+        });
+
+    };
 });

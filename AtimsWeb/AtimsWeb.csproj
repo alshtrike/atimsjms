@@ -137,6 +137,7 @@
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
+    <Content Include="scripts\app\atims-web-main.js" />
     <Content Include="scripts\app\main-controller.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -149,7 +150,6 @@
     <Content Include="scripts\npm.js" />
     <Content Include="TestScripts\defTestSpec.js" />
     <Content Include="tests\query-test.js" />
-    <Content Include="scripts\app\atims-web-main.js" />
     <Content Include="Global.asax" />
     <Content Include="index.cshtml" />
     <Content Include="fonts\ui-grid.woff" />
@@ -221,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

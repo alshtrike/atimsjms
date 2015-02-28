@@ -139,6 +139,7 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\app\atims-web-main.js" />
     <Content Include="scripts\app\main-controller.js" />
+    <Content Include="scripts\app\test-controller.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jasmine-html.js">
@@ -195,6 +196,7 @@
     <Content Include="packages.config" />
     <Content Include="scripts\jquery-2.1.3.min.map" />
     <None Include="Views\Home.cshtml" />
+    <Content Include="Views\Records\Active.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -217,7 +219,6 @@
     <Folder Include="Views\Monitor\" />
     <Folder Include="Views\Programs\" />
     <Folder Include="Views\Property\" />
-    <Folder Include="Views\Records\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

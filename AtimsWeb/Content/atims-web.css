@@ -240,4 +240,10 @@ body {
     text-indent: 0;
     border-top: 0 solid;
 }
+
+/*for ui grid size*/
+.grid {
+  width: 500px;
+  height: 250px;
+}
 /* End Sidebar Nav */

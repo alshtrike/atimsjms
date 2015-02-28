@@ -2,4 +2,4 @@
 
 
 // App Declaration
-var atimsMainApp = angular.module('atimsMainApp', []);
+var atimsMainApp = angular.module('atimsMainApp', ['ui.grid']);

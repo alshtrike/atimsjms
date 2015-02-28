@@ -153,8 +153,8 @@
     <Content Include="tests\query-test.js" />
     <Content Include="Global.asax" />
     <Content Include="index.cshtml" />
-    <Content Include="fonts\ui-grid.woff" />
-    <Content Include="fonts\ui-grid.ttf" />
+    <Content Include="Content\ui-grid.woff" />
+    <Content Include="Content\ui-grid.ttf" />
     <Content Include="fonts\ui-grid.eot" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="tests\query-test.cshtml" />

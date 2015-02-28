@@ -137,6 +137,7 @@
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
+    <Content Include="scripts\app\main-controller.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jasmine-html.js">
@@ -148,7 +149,7 @@
     <Content Include="scripts\npm.js" />
     <Content Include="TestScripts\defTestSpec.js" />
     <Content Include="tests\query-test.js" />
-    <Content Include="scripts\atims-web-main.js" />
+    <Content Include="scripts\app\atims-web-main.js" />
     <Content Include="Global.asax" />
     <Content Include="index.cshtml" />
     <Content Include="fonts\ui-grid.woff" />

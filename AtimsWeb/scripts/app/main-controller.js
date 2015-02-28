@@ -1,5 +1,4 @@
-// Main Controller
-var atimsAppController = function ($scope, $http, $rootScope, $location) {
+﻿var atimsAppController = function ($scope, $http, $rootScope, $location) {
     //// Variables
 
     /// Web Page
@@ -21,7 +20,7 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     //   subModule and the lefthand menu must represent that. This is directly linked
     //   using ng-repeat in the index.html file for displaying the left menu.
     $scope.subModuleMenu = [];
-    
+
     /// Current Page / URL Handling
     //   The current page is based off of three key values: the current app, the
     //     current module, and the current subModule. While it is possible to load
@@ -51,14 +50,14 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
 
 
     //// App / Module and SubModule Loading Functions
-    
+
     /// Loading the App
     // $scope.loadApp cleans the page and then starts to load the set of modules
     //   and subModuels associated with the app id (AppAO_Module.AppAO_id). Currently
     //   only JMS (AppAO_id = 4) is being implemented.
     //   @TODO: This may need to change to load by name once other apps are being
     //     implemented. See $scope.goToApp(id) below.
-    var loadApp = function( appId ){
+    var loadApp = function (appId) {
         // Clear variables for loading the new app
         $scope.moduleNameMap = {};
         $scope.moduleMenu = [];
@@ -70,7 +69,7 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
         // This makes a request using $http.get to the server for the modules
         //   associated with app based on $scope.appId. Since the response is not
         //   immediate, we should display the loading screen.
-        $scope.appLoaderShow( true );
+        $scope.appLoaderShow(true);
         $http.get("api/Modules/" + $scope.selectedAppId)
             .success(function (data) { setupModules(data) })
             .error(function (data) { loadAppFailed(data) });
@@ -78,9 +77,9 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     // loadAppFailed(data) is called when the $http function returns an error code.
     //   This is not intended to catch exceptions, which should bubble to the console.
     //   @TODO: Failure Handling (maybe go to 404 page?)
-    var loadAppFailed = function( data ){
+    var loadAppFailed = function (data) {
         // @TODO: I do nothing, someone fix me :D
-        console.log( "Module HTTP Request Failed: " + data );
+        console.log("Module HTTP Request Failed: " + data);
     };
     // setupModules is called from a successful $http.get request in loadApp, and
     //   will attempt to load the modules and subModules from the recieved Json data
@@ -126,7 +125,7 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
         // Check if the requested page is already loaded, and set the page to
         //   null first. If you *only* set the page to the same value, angular
         //   will assume the page is the same and does not need to be reloaded.
-        if ($scope.page ==  newPage) {
+        if ($scope.page == newPage) {
             $scope.page = "";
         }
         $scope.page = newPage;
@@ -162,51 +161,51 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     };
     // Displays the users personal home page
     //   @ TODO: Implement once users are implemented
-    var displayHome = function (){
+    var displayHome = function () {
         // @TODO: I do the wrong thing, someone fix me :D
-        displayPage( "Views/Home.cshtml" );
+        displayPage("Views/Home.cshtml");
     };
     // Displays the 404 error page
     //   @ TODO: Implement this (See above - No 404 page exists as of writing this)
-    var display404 = function (errorInfo){
+    var display404 = function (errorInfo) {
         // @TODO: I do nothing, someone fix me :D
-        console.log( errorInfo );
+        console.log(errorInfo);
     };
     // $scope.pageLoaded() is called after $scope.page has been successfully loaded
     //   with ng-include
-    $scope.pageLoaded = function (){
+    $scope.pageLoaded = function () {
         // @TODO: I do nothing, someone fix me :D
     };
-    
+
     /// URL Handling
     // goToSubModule(moduleName, subModuleName) is used inside the web pages for link
     //   urls. This is equivalent to href="#/moduleName/subModuleName/"
-    $scope.goToSubModule = function (moduleName, subModuleName){
+    $scope.goToSubModule = function (moduleName, subModuleName) {
         $location.path("/" + moduleName + "/" + subModuleName);
     };
     // goToPath(path) is used inside the web pages to set the url directly, instead of
     //   using goToSubModule to format it. This can also allow URL's that do not follow
     //   the URL convention.
-    $scope.goToPath = function(path){
-        $location.path( path );
+    $scope.goToPath = function (path) {
+        $location.path(path);
     };
     // goToApp(appID) is currently not in use as only the JMS (AppAO_id = 4) is being implemented
     //    @TODO: This may need to change to by name instead of id when the time comes
-    $scope.goToApp = function (id){
-        $scope.appLoaderShow( true );
+    $scope.goToApp = function (id) {
+        $scope.appLoaderShow(true);
         loadApp(id);
     };
     // urlChangeEvent(event) is called every time the browser url is changed. 
-    var urlChangeEvent = function (event){
+    var urlChangeEvent = function (event) {
         // Wait until we're loaded (it will call urlChangeEvent anyways)
-        if( $scope.moduleMenu.length == 0 )
+        if ($scope.moduleMenu.length == 0)
             return;
 
         var rawpath = $location.path();
         // Matches "" "#" and "#/" which should all lead to the users home page
-        if( rawpath.match( /^#?\/?$/ ) ){
+        if (rawpath.match(/^#?\/?$/)) {
             displayHome();
-        }else{
+        } else {
             var path = $location.path().split('/');
             displaySubModule(path[1], path[2]);
         }
@@ -220,13 +219,13 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     //    (see index.html for subModule highlighting)
     // SubModule Menu Toggle
     $scope.menuToggleText = "<<";
-    $scope.menuToggle = function ( ){
+    $scope.menuToggle = function () {
         $("#wrapper").toggleClass("toggled");
-        $scope.menuToggleText = ($scope.menuToggleText === "<<")? ">>" : "<<";
+        $scope.menuToggleText = ($scope.menuToggleText === "<<") ? ">>" : "<<";
     };
     // Shows or Hides the full page loading screen
     $scope.appLoaderShow = function (toShow) {
-        if ($("#loading").hasClass("toggled") === toShow  ) {
+        if ($("#loading").hasClass("toggled") === toShow) {
             $("#loading").toggleClass("toggled");
             $("#loading-hider").toggleClass("toggled");
         }
@@ -240,7 +239,7 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
         // Set navbar-under flush against navbar-over
         navbarUnder.css("top", navbarOver.offset().top + navbarOver.outerHeight() + "px");
         // Set wrapper flush against navbarUnder
-        $("#wrapper").css("top", ( navbarUnder.offset().top + navbarUnder.outerHeight() ) + "px");
+        $("#wrapper").css("top", (navbarUnder.offset().top + navbarUnder.outerHeight()) + "px");
     };
     $(window).resize(resizeHandler);
 
@@ -249,8 +248,5 @@ var atimsAppController = function ($scope, $http, $rootScope, $location) {
     // Load JMS App (AppAO_id = 4)
     loadApp(4);
 };
-atimsAppController.$inject = ['$scope','$http','$rootScope','$location'];
-
-// App Declaration
-var atimsMainApp = angular.module('atimsMainApp', []);
+atimsAppController.$inject = ['$scope', '$http', '$rootScope', '$location'];
 atimsMainApp.controller('AtimsAppController', atimsAppController);

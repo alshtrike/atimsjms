@@ -20,7 +20,7 @@ namespace AtimsWeb.Controllers
         // HTTP GET ~/api/Inmates/4
         // Using a parameter returns a set of inmates 
        
-        [ResponseType(typeof(AppAO_Module))]
+        [ResponseType(typeof(InmateVM))]
         public IHttpActionResult GetInmates(int id)
         {
             IQueryable<InmateVM> moduleList =

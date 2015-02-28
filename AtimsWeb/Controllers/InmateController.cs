@@ -26,7 +26,7 @@ namespace AtimsWeb.Controllers
             IQueryable<InmateVM> moduleList =
    
                 from mod in db.Inmates
-                where mod.inmate_id == id
+                where (mod.inmate_id>=(id-50) && mod.inmate_id <= id && mod.inmate_active==0)
                 orderby mod.inmate_id
                 select new InmateVM()
                 {

@@ -1,4 +1,4 @@
-﻿atimsMainApp.controller('testController',  function ($scope,$http){
+﻿atimsMainApp.controller('inmateGridController',  function ($scope,$http){
     $scope.gridOptions = {};
     $last = 50;
     /*specify percentage when lazy loading should trigger*/
@@ -13,10 +13,10 @@
         $scope.error="failed to load inmates"
     });
 
-    /*loads 50 more inmates  as you keep scrolling*/
+    /*loads 5 more inmates  as you keep scrolling(ex if last=50, loads 51-55)*/
     $scope.gridOptions.onRegisterApi = function (gridApi) {
         gridApi.infiniteScroll.on.needLoadMoreData($scope, function () {
-            $last = $last + 51;
+            $last = $last + 5;
             $http.get('/api/inmate/'+$last).success(function (data) {
                 $scope.gridOptions.data = $scope.gridOptions.data.concat(data);
                 gridApi.infiniteScroll.dataLoaded();

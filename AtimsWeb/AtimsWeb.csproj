@@ -130,6 +130,41 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\atims-web.css" />
+    <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\ui-grid-unstable.css" />
     <Content Include="Content\ui-grid-unstable.min.css" />
     <Content Include="css\jasmine.css" />
@@ -138,16 +173,23 @@
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\app\atims-web-main.js" />
+    <Content Include="scripts\app\calendar-controller.js" />
     <Content Include="scripts\app\main-controller.js" />
     <Content Include="scripts\app\test-controller.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\calendar.js" />
+    <Content Include="scripts\fullcalendar.js" />
+    <Content Include="scripts\fullcalendar.min.js" />
+    <Content Include="scripts\gcal.js" />
     <Content Include="scripts\jasmine-html.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jasmine.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\jquery-ui-1.11.3.js" />
+    <Content Include="scripts\jquery-ui-1.11.3.min.js" />
     <Content Include="scripts\npm.js" />
     <Content Include="TestScripts\defTestSpec.js" />
     <Content Include="tests\query-test.js" />
@@ -173,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\InmateController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,14 +223,15 @@
     </Compile>
     <Compile Include="Models\AppAO_Module.cs" />
     <Compile Include="Models\AppAO_SubModule.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Arrest.cs" />
-    <Compile Include="Models\Facility.cs" />
     <Compile Include="Models\Housing_Unit.cs" />
     <Compile Include="Models\Incarceration.cs" />
     <Compile Include="Models\Inmate.cs" />
     <Compile Include="Models\JMS.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AppointmentsVM.cs" />
     <Compile Include="ViewModels\InmateVM.cs" />
     <Compile Include="ViewModels\ModulesVM.cs" />
     <Compile Include="ViewModels\SubModuleVM.cs" />
@@ -197,6 +241,7 @@
     <Content Include="scripts\jquery-2.1.3.min.map" />
     <None Include="Views\Home.cshtml" />
     <Content Include="Views\Records\Active.html" />
+    <Content Include="Views\Records\Appt.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

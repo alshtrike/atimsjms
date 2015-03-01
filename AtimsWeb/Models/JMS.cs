@@ -26,11 +26,11 @@ namespace AtimsWeb.Models
         public virtual DbSet<AppAO_Module> AppAO_Module { get; set; }
         public virtual DbSet<AppAO_SubModule> AppAO_SubModule { get; set; }
         public virtual DbSet<Arrest> Arrests { get; set; }
-        public virtual DbSet<Facility> Facilities { get; set; }
         public virtual DbSet<Housing_Unit> Housing_Unit { get; set; }
         public virtual DbSet<Incarceration> Incarcerations { get; set; }
         public virtual DbSet<Inmate> Inmates { get; set; }
         public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

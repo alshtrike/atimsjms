@@ -22,11 +22,23 @@ namespace AtimsWeb.Controllers
        
         [ResponseType(typeof(InmateVM))]
         public IHttpActionResult GetInmates(int id)
-        {
+        {/*first we load 0-50 then we load 5 at a time
+          ex: 0-50, 51-55, 56-60,etc...
+          */
+            int first = 0;
+            int last = id;
+
+            if (last > 50)
+            {
+                first = last - 4;
+            }
+            else {
+                first = 0;
+            }
             IQueryable<InmateVM> moduleList =
    
                 from mod in db.Inmates
-                where (mod.inmate_id>=(id-50) && mod.inmate_id <= id && mod.inmate_active==0)
+                where (mod.inmate_id>=first && mod.inmate_id <= last && mod.inmate_active==0)
                 orderby mod.inmate_id
                 select new InmateVM()
                 {

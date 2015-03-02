@@ -175,7 +175,7 @@
     <Content Include="scripts\app\atims-web-main.js" />
     <Content Include="scripts\app\calendar-controller.js" />
     <Content Include="scripts\app\main-controller.js" />
-    <Content Include="scripts\app\test-controller.js" />
+    <Content Include="scripts\app\inmategrid-controller.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\calendar.js" />

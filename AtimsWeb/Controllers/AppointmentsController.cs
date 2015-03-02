@@ -25,7 +25,7 @@ namespace AtimsWeb.Controllers
 
         // GET: api/Appointments/5
         [ResponseType(typeof(AppointmentsVM))]
-        public IHttpActionResult GetAppointment()
+        public IHttpActionResult GetAppointment(int arg)
         {
             IQueryable<AppointmentsVM> appointmentsList =
                 from appt in db.Appointments

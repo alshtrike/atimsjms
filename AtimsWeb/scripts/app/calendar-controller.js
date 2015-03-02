@@ -5,33 +5,39 @@
     var year = date.getFullYear();
 
      // event source that contains custom events on the scope
-    $scope.events = [];
+    $scope.events = [{ title: 'test', start: new Date(2015, 2, 20, 9, 20, 0, 0) }];
+
+
     var loadCalendar = function () {
-        $http.get("api/Appointments/")
-            .success(function (data) { setupCalendar(data) })
+        //we can add an int to pass to determine what day/week/month to get events for
+        $http.get("api/Appointments/0")
+            .success(function (data) { return setupCalendar(data) })
             .error(function (data) { failed(data) })
     };
 
+     //called on error http get
     var failed = function (data) {
+        $scope.calendarData = "Failed to load";
         console.log("Calendar http load failed: " + data);
     };
 
+     //called on successful http get
     var setupCalendar = function (data) {
-        var calendarList = angular.fromJson(data);
-       /* for (var i = 0; i < calendarList.length; i++) {
-            var appointment = calendarList[i];
+        var calendarData = angular.fromJson(data);
+        $scope.debugCalendar = calendarData;
 
-        }*/
-    };
+        for (var i = 0; i < calendarData.length; i++) {
+            var Appointment = calendarData[i];
+            /*more information is really needed about how the dates are 
+                set up in the db before the end can really be determined
+                for now they are just set up to be an hour long*/
+            /*more parameters can be set here as well for events*/
+            $scope.events.push({
+                title: Appointment.appointment_reason,
+                start: Appointment.appointment_date
+            });
 
-    
-    // event source that calls a function on every view switch
-    $scope.eventsF = function (start, end, timezone, callback) {
-        var s = new Date(start).getTime() / 1000;
-        var e = new Date(end).getTime() / 1000;
-        var m = new Date(start).getMonth();
-        var events = [{ title: 'Feed Me ' + month, start: s + (50000), end: s + (100000), allDay: false, className: ['customFeed'] }];
-        callback(events);
+        }
     };
 
     
@@ -62,8 +68,16 @@
     };
     // add custom event
     $scope.addEvent = function () {
-        $scope.events.push({
-           //custom event object here
+        var newEvent = {
+            //logic for new event here
+        };
+        $scope.events.push(newEvent);
+        $http.post('api/Appointments', newEvent)
+        .success(function (data) {
+            console.log('put success: ' + data);
+        })
+        .error(function (data) {
+            console.log('put error: ' + data);
         });
     };
     // remove event 
@@ -105,7 +119,7 @@
         }
     };
 
-    // event sources array//
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
-    $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+     // event sources array
+    $scope.eventSources = [$scope.events];
+    loadCalendar();
 });

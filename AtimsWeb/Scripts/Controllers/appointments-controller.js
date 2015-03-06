@@ -1,5 +1,5 @@
 ﻿/// Appointments Appointments Controller
- atimsApp.controller('AtimsAppointmentsController', function ($scope, $compile, $http, uiCalendarConfig) {
+ atimsApp.controller('AppointmentsController', function ($scope, $compile, $http, uiCalendarConfig) {
     // Current Date
     var date = new Date();
     var day = date.getDate();

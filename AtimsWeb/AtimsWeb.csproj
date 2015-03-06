@@ -123,9 +123,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular\atims-nav.js" />
-    <Content Include="Angular\atims-calendar.js" />
-    <Content Include="Angular\atims-inmates.js" />
+    <Content Include="Scripts\atims-nav.js" />
+    <Content Include="Scripts\Controllers\appointments-controller.js" />
+    <Content Include="Scripts\Controllers\inmates-controller.js" />
+    <Content Include="Scripts\Services\inmates-service.js" />
     <Content Include="Vendor\css\fullcalendar.css" />
     <Content Include="Vendor\css\fullcalendar.print.css" />
     <Content Include="Vendor\css\themes\base\accordion.css" />
@@ -192,7 +193,7 @@
     <Content Include="Vendor\scripts\gcal.js" />
     <Content Include="Vendor\scripts\jquery-ui-1.11.3.js" />
     <Content Include="Vendor\scripts\jquery-ui-1.11.3.min.js" />
-    <Content Include="Angular\atims-main.js" />
+    <Content Include="Scripts\atims-main.js" />
     <Content Include="Global.asax" />
     <Content Include="index.cshtml" />
     <Content Include="Vendor\css\ui-grid.woff" />
@@ -216,25 +217,25 @@
     <Content Include="Vendor\scripts\ui-grid-unstable.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\Controllers\AppointmentsController.cs" />
-    <Compile Include="EntityFramework\Controllers\InmatesController.cs" />
-    <Compile Include="EntityFramework\Models\Appointment.cs" />
-    <Compile Include="EntityFramework\Models\Facility.cs" />
-    <Compile Include="EntityFramework\Models\Inmate.cs" />
-    <Compile Include="EntityFramework\Models\Person.cs" />
-    <Compile Include="EntityFramework\ViewModels\AppointmentsVM.cs" />
-    <Compile Include="EntityFramework\ViewModels\InmateVM.cs" />
-    <Compile Include="EntityFramework\WebApiConfig.cs" />
-    <Compile Include="EntityFramework\Controllers\ModulesController.cs" />
+    <Compile Include="CS\Controllers\AppointmentsController.cs" />
+    <Compile Include="CS\Controllers\InmatesController.cs" />
+    <Compile Include="CS\Models\Appointment.cs" />
+    <Compile Include="CS\Models\Facility.cs" />
+    <Compile Include="CS\Models\Inmate.cs" />
+    <Compile Include="CS\Models\Person.cs" />
+    <Compile Include="CS\ViewModels\AppointmentsVM.cs" />
+    <Compile Include="CS\ViewModels\InmateVM.cs" />
+    <Compile Include="CS\WebApiConfig.cs" />
+    <Compile Include="CS\Controllers\ModulesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\Models\AppAO_Module.cs" />
-    <Compile Include="EntityFramework\Models\AppAO_SubModule.cs" />
-    <Compile Include="EntityFramework\Models\JMS.cs" />
+    <Compile Include="CS\Models\AppAO_Module.cs" />
+    <Compile Include="CS\Models\AppAO_SubModule.cs" />
+    <Compile Include="CS\Models\JMS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EntityFramework\ViewModels\ModulesVM.cs" />
-    <Compile Include="EntityFramework\ViewModels\SubModuleVM.cs" />
+    <Compile Include="CS\ViewModels\ModulesVM.cs" />
+    <Compile Include="CS\ViewModels\SubModuleVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -252,7 +253,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\Directives\" />
+    <Folder Include="Scripts\Modals\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

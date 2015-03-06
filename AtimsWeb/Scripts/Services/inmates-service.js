@@ -10,37 +10,19 @@
 //   - Specific Inmate ID
 //   - List of Inmates by ID
 //   - Search functions for inmates from database
-atimsApp.service( 'AtimsInmatesService', function ($http) {
-    
+atimsApp.service('InmatesService', function ($http) {
+
     // Retrieves all Inmates who are flagged as Active
     //   This may be a large amount of data and may take a moment to load,
     //   however, UI-Grid can handle infinite scrolling with a large number
     //   of inmates fine.
-    this.getActiveInmates = function( callback ){
+    this.getActiveInmates = function (callback) {
         $http.get('/api/Inmates')
             .success(function (data) {
-                 callback( data );
+                callback(data);
             })
             .error(function () {
             });
-    };
-
-});
-
-
-/// Inmates UI-Grid Controller
-atimsApp.controller('AtimsInmateGridController',  function ($scope,$http,AtimsInmatesService) {
-    // Grid Options
-    // @TOOD: Add column information to match the simple ViewModel for Inmates
-    //   so that columns can be appropriately sized and linked to data
-    $scope.gridOptions = {enableFiltering: true};
-
-    // Loads all active Inmates
-    this.loadActiveInmates = function( ){
-        AtimsInmatesService.getActiveInmates( loadInmates );
-    };
-    var loadInmates = function (data){
-        $scope.gridOptions.data = data;
     };
 
 });

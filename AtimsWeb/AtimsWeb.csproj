@@ -123,6 +123,45 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\atims-nav.js" />
+    <Content Include="Scripts\Controllers\appointments-controller.js" />
+    <Content Include="Scripts\Controllers\inmates-controller.js" />
+    <Content Include="Scripts\Services\inmates-service.js" />
+    <Content Include="Vendor\css\fullcalendar.css" />
+    <Content Include="Vendor\css\fullcalendar.print.css" />
+    <Content Include="Vendor\css\themes\base\accordion.css" />
+    <Content Include="Vendor\css\themes\base\all.css" />
+    <Content Include="Vendor\css\themes\base\autocomplete.css" />
+    <Content Include="Vendor\css\themes\base\base.css" />
+    <Content Include="Vendor\css\themes\base\button.css" />
+    <Content Include="Vendor\css\themes\base\core.css" />
+    <Content Include="Vendor\css\themes\base\datepicker.css" />
+    <Content Include="Vendor\css\themes\base\dialog.css" />
+    <Content Include="Vendor\css\themes\base\draggable.css" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Vendor\css\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Vendor\css\themes\base\menu.css" />
+    <Content Include="Vendor\css\themes\base\progressbar.css" />
+    <Content Include="Vendor\css\themes\base\resizable.css" />
+    <Content Include="Vendor\css\themes\base\selectable.css" />
+    <Content Include="Vendor\css\themes\base\selectmenu.css" />
+    <Content Include="Vendor\css\themes\base\slider.css" />
+    <Content Include="Vendor\css\themes\base\sortable.css" />
+    <Content Include="Vendor\css\themes\base\spinner.css" />
+    <Content Include="Vendor\css\themes\base\tabs.css" />
+    <Content Include="Vendor\css\themes\base\theme.css" />
+    <Content Include="Vendor\css\themes\base\tooltip.css" />
     <Content Include="Content\atims-web-loader-inv.gif" />
     <Content Include="Content\atims-web-loader.gif" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -187,58 +226,78 @@
     <Content Include="scripts\fullcalendar.min.js" />
     <Content Include="scripts\gcal.js" />
     <Content Include="scripts\jasmine-html.js">
+    <Content Include="Vendor\css\bootstrap-theme.css" />
+    <Content Include="Vendor\css\bootstrap-theme.min.css" />
+    <Content Include="Vendor\css\bootstrap.css" />
+    <Content Include="Vendor\css\bootstrap.min.css" />
+    <Content Include="Content\atims-main.css" />
+    <Content Include="Vendor\css\ui-grid-unstable.css" />
+    <Content Include="Vendor\css\ui-grid-unstable.min.css" />
+    <Content Include="Vendor\css\jasmine.css" />
+    <Content Include="Vendor\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Vendor\css\ui-grid.svg" />
+    <Content Include="Vendor\scripts\angular-mocks.js" />
+    <Content Include="Vendor\scripts\angular.js" />
+    <Content Include="Vendor\scripts\angular.min.js" />
+    <Content Include="Vendor\scripts\bootstrap.js" />
+    <Content Include="Vendor\scripts\bootstrap.min.js" />
+    <Content Include="Vendor\scripts\calendar.js" />
+    <Content Include="Vendor\scripts\jasmine-html.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="scripts\jasmine.js">
+    <Content Include="Vendor\scripts\jasmine.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="scripts\jquery-ui-1.11.3.js" />
-    <Content Include="scripts\jquery-ui-1.11.3.min.js" />
-    <Content Include="scripts\npm.js" />
-    <Content Include="TestScripts\defTestSpec.js" />
-    <Content Include="tests\query-test.js" />
+    <Content Include="Vendor\scripts\moment.js" />
+    <Content Include="Vendor\scripts\npm.js" />
+    <Content Include="Vendor\scripts\fullcalendar.js" />
+    <Content Include="Vendor\scripts\fullcalendar.min.js" />
+    <Content Include="Vendor\scripts\gcal.js" />
+    <Content Include="Vendor\scripts\jquery-ui-1.11.3.js" />
+    <Content Include="Vendor\scripts\jquery-ui-1.11.3.min.js" />
+    <Content Include="Scripts\atims-main.js" />
     <Content Include="Global.asax" />
     <Content Include="index.cshtml" />
-    <Content Include="Content\ui-grid.woff" />
-    <Content Include="Content\ui-grid.ttf" />
-    <Content Include="fonts\ui-grid.eot" />
-    <Content Include="scripts\angular.min.js.map" />
-    <Content Include="tests\query-test.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <None Include="scripts\jquery-1.9.0.intellisense.js" />
-    <None Include="scripts\jquery-2.1.3.intellisense.js" />
-    <Content Include="scripts\jquery-2.1.3.js" />
-    <Content Include="scripts\jquery-2.1.3.min.js" />
-    <Content Include="scripts\ui-grid-unstable.js" />
-    <Content Include="scripts\ui-grid-unstable.min.js" />
+    <Content Include="Vendor\css\ui-grid.woff" />
+    <Content Include="Vendor\css\ui-grid.ttf" />
+    <Content Include="Vendor\css\ui-grid.eot" />
+    <Content Include="Vendor\scripts\angular.min.js.map" />
+    <Content Include="Vendor\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Vendor\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Vendor\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Vendor\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Vendor\css\bootstrap-theme.css.map" />
+    <Content Include="Vendor\css\bootstrap.css.map" />
+    <None Include="Views\JMS\Records\Active.cshtml" />
+    <None Include="Views\JMS\Records\Appt.cshtml" />
+    <Content Include="Views\Nav\404.cshtml" />
+    <None Include="Vendor\scripts\jquery-1.9.0.intellisense.js" />
+    <None Include="Vendor\scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Vendor\scripts\jquery-2.1.3.js" />
+    <Content Include="Vendor\scripts\jquery-2.1.3.min.js" />
+    <Content Include="Vendor\scripts\ui-grid-unstable.js" />
+    <Content Include="Vendor\scripts\ui-grid-unstable.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AppointmentsController.cs" />
-    <Compile Include="Controllers\InmateController.cs" />
-    <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="CS\Controllers\AppointmentsController.cs" />
+    <Compile Include="CS\Controllers\InmatesController.cs" />
+    <Compile Include="CS\Models\Appointment.cs" />
+    <Compile Include="CS\Models\Facility.cs" />
+    <Compile Include="CS\Models\Inmate.cs" />
+    <Compile Include="CS\Models\Person.cs" />
+    <Compile Include="CS\ViewModels\AppointmentsVM.cs" />
+    <Compile Include="CS\ViewModels\InmateVM.cs" />
+    <Compile Include="CS\WebApiConfig.cs" />
+    <Compile Include="CS\Controllers\ModulesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppAO_Module.cs" />
-    <Compile Include="Models\AppAO_SubModule.cs" />
-    <Compile Include="Models\Appointment.cs" />
-    <Compile Include="Models\Arrest.cs" />
-    <Compile Include="Models\Housing_Unit.cs" />
-    <Compile Include="Models\Incarceration.cs" />
-    <Compile Include="Models\Inmate.cs" />
-    <Compile Include="Models\JMS.cs" />
-    <Compile Include="Models\Person.cs" />
+    <Compile Include="CS\Models\AppAO_Module.cs" />
+    <Compile Include="CS\Models\AppAO_SubModule.cs" />
+    <Compile Include="CS\Models\JMS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AppointmentsVM.cs" />
-    <Compile Include="ViewModels\InmateVM.cs" />
-    <Compile Include="ViewModels\ModulesVM.cs" />
-    <Compile Include="ViewModels\SubModuleVM.cs" />
+    <Compile Include="CS\ViewModels\ModulesVM.cs" />
+    <Compile Include="CS\ViewModels\SubModuleVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -247,6 +306,10 @@
     <Content Include="Views\Records\Active.html" />
     <Content Include="Views\Records\Appt.html" />
     <Content Include="Views\Records\NewEvent.html" />
+    <Content Include="Vendor\scripts\jquery-2.1.3.min.map" />
+    <None Include="Views\Nav\Home.cshtml" />
+    <Content Include="Views\Nav\Login.cshtml" />
+    <None Include="Views\Nav\Nav.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -258,21 +321,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\Alt Sent\" />
-    <Folder Include="Views\Booking\" />
-    <Folder Include="Views\Classify\" />
-    <Folder Include="Views\Facility\" />
-    <Folder Include="Views\Intake\" />
-    <Folder Include="Views\Medical\" />
-    <Folder Include="Views\Money\" />
-    <Folder Include="Views\Monitor\" />
-    <Folder Include="Views\Programs\" />
-    <Folder Include="Views\Property\" />
+    <Folder Include="Scripts\Directives\" />
+    <Folder Include="Scripts\Modals\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -225,7 +225,7 @@
     <Content Include="scripts\fullcalendar.js" />
     <Content Include="scripts\fullcalendar.min.js" />
     <Content Include="scripts\gcal.js" />
-    <Content Include="scripts\jasmine-html.js">
+    <Content Include="scripts\jasmine-html.js"/>
     <Content Include="Vendor\css\bootstrap-theme.css" />
     <Content Include="Vendor\css\bootstrap-theme.min.css" />
     <Content Include="Vendor\css\bootstrap.css" />

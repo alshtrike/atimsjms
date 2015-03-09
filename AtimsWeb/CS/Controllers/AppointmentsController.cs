@@ -44,16 +44,6 @@ namespace AtimsWeb.Controllers {
             IQueryable<AppointmentsVM> appointmentsList =
                 from appt in db.Appointments
                 orderby appt.appointment_date
-<<<<<<< HEAD:AtimsWeb/Controllers/AppointmentsController.cs
-                select new AppointmentsVM()
-                {
-                    appointment_date = appt.appointment_date,
-                    appointment_end = appt.appointment_end,
-                    appointment_notes = appt.appointment_notes,
-                    appointment_place = appt.appointment_place,
-                    appointment_reason = appt.appointment_reason,
-                    appointment_time = appt.appointment_time
-=======
                 select new AppointmentsVM() {
                     Date = appt.appointment_date,
                     Duration = appt.appointment_duration,
@@ -61,7 +51,6 @@ namespace AtimsWeb.Controllers {
                     Place = appt.appointment_place,
                     Reason = appt.appointment_reason,
                     Time = appt.appointment_time
->>>>>>> 9b5787ec2e8672f96e85df2a627d9da9f2fccc90:AtimsWeb/CS/Controllers/AppointmentsController.cs
                 };
 
             return Ok(appointmentsList);

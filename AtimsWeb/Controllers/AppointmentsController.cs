@@ -33,7 +33,7 @@ namespace AtimsWeb.Controllers
                 select new AppointmentsVM()
                 {
                     appointment_date = appt.appointment_date,
-                    appointment_duration = appt.appointment_duration,
+                    appointment_end = appt.appointment_end,
                     appointment_notes = appt.appointment_notes,
                     appointment_place = appt.appointment_place,
                     appointment_reason = appt.appointment_reason,

@@ -1,12 +1,17 @@
 ﻿<div ng-controller="calendarController">
- 
+    <button class="btn btn-default" ng-click="openModal()">Add Event</button>
+
     <div>
         <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
     </div>
   
     <div>
+        new Date:
+        {{newDate}}
+    </div>
+    <div>
         Calendar:
         {{debugCalendar}}
     </div>
-
 </div>
+

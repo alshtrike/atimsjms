@@ -1,17 +1,30 @@
-﻿ atimsMainApp.controller('calendarController', function ($scope, $compile, uiCalendarConfig, $http) {
+﻿ atimsMainApp.controller('calendarController', function ($scope,$log, $compile, $modal, uiCalendarConfig, $http) {
     var date = new Date();
     var day = date.getDate();
     var month = date.getMonth();
     var year = date.getFullYear();
 
      // event source that contains custom events on the scope
-    $scope.events = [{ title: 'test', start: new Date(2015, 2, 20, 9, 20, 0, 0) }];
+    $scope.events = [];
 
+    $scope.openModal = function () {
 
+        var modalInstance = $modal.open({
+            templateUrl: '~/Views/Records/NewEvent.html',
+            controller: 'newEventModalController'
+        });
+
+        modalInstance.result.then(function (modalEvent) {
+            addEvent(modalEvent);
+        }, function () {
+            $log.info('Modal dismissed');
+        });
+
+    };
     var loadCalendar = function () {
         //we can add an int to pass to determine what day/week/month to get events for
         $http.get("api/Appointments/0")
-            .success(function (data) { return setupCalendar(data) })
+            .success(function (data) {  setupCalendar(data) })
             .error(function (data) { failed(data) })
     };
 
@@ -34,7 +47,8 @@
             /*more parameters can be set here as well for events*/
             $scope.events.push({
                 title: Appointment.appointment_reason,
-                start: Appointment.appointment_date
+                start: Appointment.appointment_date,
+                end: Appointment.appointment_end
             });
 
         }
@@ -67,10 +81,8 @@
         }
     };
     // add custom event
-    $scope.addEvent = function () {
-        var newEvent = {
-            //logic for new event here
-        };
+    $scope.addEvent = function (modalEvent) {
+        $scope.newEvent = modalEvent;
         $scope.events.push(newEvent);
         $http.post('api/Appointments', newEvent)
         .success(function (data) {
@@ -122,4 +134,16 @@
      // event sources array
     $scope.eventSources = [$scope.events];
     loadCalendar();
-});
+    });
+
+//modal Controller
+ atimsMainApp.controller('newEventModalController', function ($scope, $modalInstance) {
+     $scope.modalEvent;
+        $scope.ok = function () {
+            $modalInstance.close($scope.modalEvent);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });

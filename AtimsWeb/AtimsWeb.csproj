@@ -168,9 +168,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ui-grid.svg" />
     <Content Include="Vendor\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Vendor\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Vendor\angular-ui\ui-bootstrap.js" />
-    <Content Include="Vendor\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Vendor\css\bootstrap-theme.css" />
     <Content Include="Vendor\css\bootstrap-theme.min.css" />
     <Content Include="Vendor\css\bootstrap.css" />
@@ -247,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Views\Home.cshtml" />
     <Content Include="Vendor\scripts\jquery-2.1.3.min.map" />
     <None Include="Views\Nav\Home.cshtml" />
     <Content Include="Views\Nav\Login.cshtml" />

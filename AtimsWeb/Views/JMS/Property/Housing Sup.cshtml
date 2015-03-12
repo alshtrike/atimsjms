@@ -1,0 +1,9 @@
+﻿<div ng-controller="HousingController">
+    <tabset>
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}">
+            <div class="btn-group">
+                <label class="btn btn-default" ng-repeat="subTab in tab.subTabs">{{subTab.title}}</label>
+            </div>
+        </tab>
+    </tabset>
+</div>

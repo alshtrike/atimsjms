@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">New Event</h3>
+</div>
+<div class="modal-body container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div style="display:inline-block; min-height:290px;">
+                <datepicker ng-model="date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="well">
+                <form>
+                    <div class="form-group">
+                        <label>Event Name</label>
+                        <input type="text" ng-model="Event.title" class="form-control" placeholder="Name Me" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" ng-model="Event.reason" class="form-control" placeholder="Describe Me" />
+                    </div>
+                    <div class="form-group">
+                        <timepicker ng-model="start" ng-change="changed()"></timepicker>
+                        <timepicker ng-model="end" ng-change="changed()"></timepicker>
+                        <input type="submit" ng-click="add(Event)" value="Add" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

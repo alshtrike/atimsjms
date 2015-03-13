@@ -1,38 +1,46 @@
 
 
     /// Appointments Appointments Controller
-    atimsApp.controller('calendarController', function ($scope, $compile, $http, uiCalendarConfig) {
-        // Current Date
+atimsApp.controller('calendarController', function ($scope, $modal, $compile, $http, uiCalendarConfig) {
+    // Current Date
 
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth();
-        var year = date.getFullYear();
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
 
-        // event source that contains custom events on the scope
-        $scope.events = [];
+    // event source that contains custom events on the scope
+    $scope.events = [];
 
-        $scope.openModal = function () {
+    $scope.openModal = function () {
 
-            var modalInstance = $modal.open({
-                templateUrl: '~/Views/Records/NewEvent.html',
-                controller: 'newEventModalController'
-            });
+        var modalInstance = $modal.open({
+            templateUrl: '/Views/JMS/Records/NewEvent.html',
+            controller: 'newEventModalController'
+        });
 
-            modalInstance.result.then(function (modalEvent) {
-                addEvent(modalEvent);
-            }, function () {
-                $log.info('Modal dismissed');
-            });
+        modalInstance.result.then(function (modalEvent) {
+            $scope.addEvents(modalEvent);
+            $scope.postEvent(modalEvent);
+        }, function () {
+            $log.info('Modal dismissed');
+        });
 
+
+    };
+
+    // Event source that contains custom events on the scope
+    $scope.events = [];
+
+    $scope.postEvent = function(data){
+        $http.post(
+                '/api/Appointments',
+                JSON.stringify(data),
+                {
+                   
+                });
         };
-        var loadCalendar = function () {
-            //we can add an int to pass to determine what day/week/month to get events for
-            $http.get("api/Appointments/0")
-                .success(function (data) {  setupCalendar(data) })
 
-            // Event source that contains custom events on the scope
-            $scope.events = [{ title: 'test', start: new Date(2015, 2, 20, 9, 20, 0, 0) }];
 
             // Loads ALL appointments from the database for the calendar
             var loadCalendar = function () {
@@ -59,14 +67,12 @@
                         for now they are just set up to be an hour long*/
                     /*more parameters can be set here as well for events*/
                     $scope.events.push({
-                        title: Appointment.appointment_reason,
-                        start: Appointment.appointment_date,
-                        end: Appointment.appointment_end,
                         title: Appointment.Reason,
                         start: Appointment.Date
                     });
 
                 }
+                
             };
 
     
@@ -98,14 +104,32 @@
             // add custom event
             $scope.addEvent = function (modalEvent) {
                 $scope.newEvent = modalEvent;
-                $scope.events.push(newEvent);
-                $http.post('api/Appointments', newEvent)
+                $scope.events.push($scope.newEvent);
+                $scope.debugCalendar.push($scope.newEvent);
+                $http.post('api/Appointments', $scope.newEvent)
                 .success(function (data) {
                     console.log('put success: ' + data);
                 })
                 .error(function (data) {
                     console.log('put error: ' + data);
                 });
+                
+            };
+
+        // add custom events all at once
+            $scope.addEvents = function (modalEvents) {
+                for (var i = 0; i < modalEvents.length; i++) {
+                    var Appointment = modalEvents[i];
+                    $scope.events.push({
+                        title: Appointment.title,
+                        start: Appointment.start
+                    });
+                    $scope.debugCalendar.push({
+                        title: Appointment.title,
+                        start: Appointment.start
+                    });
+                }
+
             };
             // remove event 
             $scope.remove = function (index) {
@@ -146,14 +170,26 @@
                 }
             };
 
+
             // event sources array
             $scope.eventSources = [$scope.events];
             loadCalendar();
-        };
+        });
 
         //modal Controller
         atimsApp.controller('newEventModalController', function ($scope, $modalInstance) {
-            $scope.modalEvent;
+            $scope.modalEvent = [];
+            $scope.date = new Date();
+            $scope.start = $scope.date;
+            $scope.end = $scope.date;
+            $scope.add = function (Event) {
+                console.log($scope.start);
+                console.log($scope.end);
+                console.log($scope.date);
+                $scope.date.setTime($scope.start.getTime());
+                $scope.modalEvent.push({ title: Event.title, reason: Event.reason, start: $scope.date });
+            };
+
             $scope.ok = function () {
                 $modalInstance.close($scope.modalEvent);
             };
@@ -163,4 +199,3 @@
             };
         });
 
-    });

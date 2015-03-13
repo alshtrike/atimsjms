@@ -212,6 +212,12 @@
     <Content Include="Vendor\css\bootstrap-theme.css.map" />
     <Content Include="Vendor\css\bootstrap.css.map" />
     <Content Include="Views\JMS\Property\Housing Sup.cshtml" />
+    <Content Include="Views\JMS\Property\Supply\index.cshtml" />
+    <Content Include="Views\JMS\Property\Closet\index.cshtml" />
+    <Content Include="Views\JMS\Property\Supply\Item.cshtml" />
+    <Content Include="Views\JMS\Property\Supply\Manage.cshtml" />
+    <Content Include="Views\JMS\Property\Supply\History.cshtml" />
+    <Content Include="Views\JMS\Property\Supply\Check List.cshtml" />
     <None Include="Views\JMS\Records\Active.cshtml" />
     <None Include="Views\JMS\Records\Appt.cshtml" />
     <Content Include="Views\Nav\404.cshtml" />

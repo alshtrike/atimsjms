@@ -1,9 +1,13 @@
 ﻿<div ng-controller="HousingController">
     <tabset>
-        <tab ng-repeat="tab in tabs" heading="{{tab.title}}">
+        <tab ng-repeat="tab in tabs" heading="{{tab.title}}" ng-click="getSub(selectedModule.Name,tab.title)">
             <div class="btn-group">
-                <label class="btn btn-default" ng-repeat="subTab in tab.subTabs">{{subTab.title}}</label>
+                <label class="btn btn-default" ng-repeat="subTab in tab.subTabs" 
+                       ng-click="getSubSub(selectedModule.Name,tab.title,subTab.title)">
+                    {{subTab.title}}
+                </label>
             </div>
+            <div ng-include="subPage"></div>
         </tab>
     </tabset>
 </div>

@@ -1,7 +1,7 @@
 // App Declaration
 var atimsApp = angular.module('atimsApp', ['ui.bootstrap',
     // UI-Grid
-    'ui.calendar', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.infiniteScroll'
+    'ui.calendar', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.infiniteScroll', 'ui.grid.selection', 'ui.grid.exporter'
 ]);
 
 // Main Controller

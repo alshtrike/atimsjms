@@ -21,7 +21,6 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
 
         modalInstance.result.then(function (modalEvent) {
             $scope.addEvents(modalEvent);
-            $scope.postEvent(modalEvent);
         }, function () {
             $log.info('Modal dismissed');
         });
@@ -128,6 +127,7 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
                         title: Appointment.title,
                         start: Appointment.start
                     });
+                    $scope.postEvent(Appointment);
                 }
 
             };
@@ -179,18 +179,29 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
         //modal Controller
         atimsApp.controller('newEventModalController', function ($scope, $modalInstance) {
             $scope.modalEvent = [];
-            $scope.date = new Date();
-            $scope.start = $scope.date;
-            $scope.end = $scope.date;
+            $scope.today = function () {
+                $scope.dt = new Date();
+                $scope.start = new Date();
+                $scope.end = new Date();
+            };
+            $scope.today();
+
+            $scope.clear = function () {
+                $scope.dt = null;
+            };
+
             $scope.add = function (Event) {
                 console.log($scope.start);
                 console.log($scope.end);
-                console.log($scope.date);
-                $scope.date.setTime($scope.start.getTime());
-                $scope.modalEvent.push({ title: Event.title, reason: Event.reason, start: $scope.date });
+                console.log($scope.dt);
+                $scope.dt.setHours($scope.start.getHours());
+                $scope.dt.setMinutes($scope.start.getMinutes());
+                console.log($scope.dt);
+                $scope.modalEvent.push({ title: Event.title, reason: Event.reason, start: $scope.dt });
             };
 
-            $scope.ok = function () {
+            $scope.ok = function (Event) {
+                $scope.add(Event);
                 $modalInstance.close($scope.modalEvent);
             };
 

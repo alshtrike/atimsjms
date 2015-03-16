@@ -84,7 +84,9 @@ namespace AtimsWeb.Controllers {
         }
 
         // POST: api/Appointments
-        [ResponseType(typeof(Appointment))]
+        [Route("api/Appointments")]
+        [HttpPost]
+       [ResponseType(typeof(Appointment))]
         public IHttpActionResult PostAppointment(Appointment appointment) {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -93,7 +95,8 @@ namespace AtimsWeb.Controllers {
             db.Appointments.Add(appointment);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = appointment.appointment_id }, appointment);
+            //return CreatedAtRoute("Appointments", new { id = appointment.appointment_id }, appointment);
+            return null;
         }
 
         // DELETE: api/Appointments/5

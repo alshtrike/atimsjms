@@ -95,8 +95,7 @@ namespace AtimsWeb.Controllers {
             db.Appointments.Add(appointment);
             db.SaveChanges();
 
-            //return CreatedAtRoute("Appointments", new { id = appointment.appointment_id }, appointment);
-            return null;
+            return CreatedAtRoute("DefaultApi", new { id = appointment.appointment_id }, appointment);
         }
 
         // DELETE: api/Appointments/5

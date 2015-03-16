@@ -166,8 +166,6 @@
     <Content Include="Vendor\css\themes\base\tooltip.css" />
     <Content Include="Content\atims-web-loader-inv.gif" />
     <Content Include="Content\atims-web-loader.gif" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\ui-grid.svg" />
     <Content Include="Vendor\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Vendor\angular-ui\ui-bootstrap.js" />
     <Content Include="Vendor\css\bootstrap-theme.css" />
@@ -180,6 +178,7 @@
     <Content Include="Vendor\css\jasmine.css" />
     <Content Include="Vendor\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Vendor\css\ui-grid.svg" />
+    <Content Include="Vendor\fonts\ui-grid.svg" />
     <Content Include="Vendor\scripts\angular-mocks.js" />
     <Content Include="Vendor\scripts\angular.js" />
     <Content Include="Vendor\scripts\angular.min.js" />
@@ -219,6 +218,9 @@
     <Content Include="Views\JMS\Property\Supply\Manage.cshtml" />
     <Content Include="Views\JMS\Property\Supply\History.cshtml" />
     <Content Include="Views\JMS\Property\Supply\Check List.cshtml" />
+    <Content Include="Vendor\fonts\ui-grid.eot" />
+    <Content Include="Vendor\fonts\ui-grid.woff" />
+    <Content Include="Vendor\fonts\ui-grid.ttf" />
     <None Include="Views\JMS\Records\Active.cshtml" />
     <None Include="Views\JMS\Records\Appt.cshtml" />
     <Content Include="Views\JMS\Records\NewEvent.html" />

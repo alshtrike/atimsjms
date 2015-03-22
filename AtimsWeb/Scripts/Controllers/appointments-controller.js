@@ -20,7 +20,7 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
         });
 
         modalInstance.result.then(function (modalEvent) {
-            $scope.addEvents(modalEvent);
+            $scope.addEvent(modalEvent);
         }, function () {
             $log.info('Modal dismissed');
         });
@@ -31,14 +31,7 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
     // Event source that contains custom events on the scope
     $scope.events = [];
 
-    $scope.postEvent = function(data){
-        $http.post(
-                '/api/Appointments',
-                JSON.stringify(data),
-                {
-                   
-                });
-        };
+
 
 
             // Loads ALL appointments from the database for the calendar
@@ -75,84 +68,59 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
             };
 
     
-            // alert on eventClick 
-            $scope.alertOnEventClick = function (date, jsEvent, view) {
-                $scope.alertMessage = (date.title + ' was clicked ');
-            };
-            // alert on Drop 
-            $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-                $scope.alertMessage = ('Event Dropped');
-            };
-            // alert on Resize
-            $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
-                $scope.alertMessage = ('Event Resized');
-            };
-            // add and removes an event source of choice 
-            $scope.addRemoveEventSource = function (sources, source) {
-                var canAdd = 0;
-                angular.forEach(sources, function (value, key) {
-                    if (sources[key] === source) {
-                        sources.splice(key, 1);
-                        canAdd = 1;
-                    }
-                });
-                if (canAdd === 0) {
-                    sources.push(source);
-                }
-            };
+         
+
             // add custom event
             $scope.addEvent = function (modalEvent) {
-                $scope.newEvent = modalEvent;
-                $scope.events.push($scope.newEvent);
-                $scope.debugCalendar.push($scope.newEvent);
-                $http.post('api/Appointments', $scope.newEvent)
-                .success(function (data) {
-                    console.log('put success: ' + data);
-                })
-                .error(function (data) {
-                    console.log('put error: ' + data);
-                });
-                
+                    $scope.events.push({
+                        title: modalEvent.title,
+                        start: modalEvent.start
+                    });
+                    $scope.debugCalendar.push({
+                        title: modalEvent.title,
+                        start: modalEvent.start
+                    });
+                    $scope.postEvent(modalEvent);
+                             
             };
 
         // add custom events all at once
-            $scope.addEvents = function (modalEvents) {
+           /* $scope.addEvents = function (modalEvents) {
                 for (var i = 0; i < modalEvents.length; i++) {
                     var Appointment = modalEvents[i];
                     $scope.events.push({
                         title: Appointment.title,
-                        start: Appointment.start
+                        start: Appointment.startDate
                     });
                     $scope.debugCalendar.push({
                         title: Appointment.title,
-                        start: Appointment.start
+                        start: Appointment.startDate
                     });
                     $scope.postEvent(Appointment);
                 }
 
+            };*/
+
+            $scope.postEvent = function (data) {
+                var appointmentVM = {
+                    reason: data.title,
+                    notes: data.reason,
+                    time: data.start,
+                    duration: data.duration
+                };
+                console.log("post data: ");
+                console.log(data);
+                console.log(JSON.stringify(data.start));
+                console.log(appointmentVM);
+                console.log(JSON.stringify(appointmentVM));
+                $http.post(
+                        '/api/Appointments/',
+                        JSON.stringify(appointmentVM)
+                        );
             };
-            // remove event 
-            $scope.remove = function (index) {
-                $scope.events.splice(index, 1);
-            };
-            // Change View 
-            $scope.changeView = function (view, calendar) {
-                uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
-            };
-            // Change View 
-            $scope.renderCalender = function (calendar) {
-                if (uiCalendarConfig.calendars[calendar]) {
-                    uiCalendarConfig.calendars[calendar].fullCalendar('render');
-                }
-            };
-            // Render Tooltip 
-            $scope.eventRender = function (event, element, view) {
-                element.attr({
-                    'tooltip': event.title,
-                    'tooltip-append-to-body': true
-                });
-                $compile(element)($scope);
-            };
+
+
+          
             // config object 
             $scope.uiConfig = {
                 calendar: {
@@ -178,7 +146,6 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
 
         //modal Controller
         atimsApp.controller('newEventModalController', function ($scope, $modalInstance) {
-            $scope.modalEvent = [];
             $scope.today = function () {
                 $scope.dt = new Date();
                 $scope.start = new Date();
@@ -191,13 +158,21 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
             };
 
             $scope.add = function (Event) {
-                console.log($scope.start);
-                console.log($scope.end);
-                console.log($scope.dt);
-                $scope.dt.setHours($scope.start.getHours());
-                $scope.dt.setMinutes($scope.start.getMinutes());
-                console.log($scope.dt);
-                $scope.modalEvent.push({ title: Event.title, reason: Event.reason, start: $scope.dt });
+                console.log("start: "+$scope.start);
+                console.log("end: "+$scope.end);
+                console.log("dt: " + $scope.dt);
+                console.log("title: " + $scope.title);
+                console.log("reason: " + $scope.reason);
+                var startDate = new Date();
+                startDate.setDate($scope.dt.getDate());
+                startDate.setHours($scope.start.getHours());
+                startDate.setMinutes($scope.start.getMinutes());
+                eventDate = startDate.toISOString().slice(0, 19);
+                var duration = ($scope.end.getHours() * 60 + $scope.end.getMinutes())
+                    - ($scope.start.getHours() * 60 + $scope.start.getMinutes());
+                console.log("start: "+eventDate);
+                console.log("duration: "+duration);
+                $scope.modalEvent={ title: $scope.title, reason: $scope.reason, start: eventDate, duration: duration };
             };
 
             $scope.ok = function (Event) {

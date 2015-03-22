@@ -87,15 +87,20 @@ namespace AtimsWeb.Controllers {
         [Route("api/Appointments")]
         [HttpPost]
        [ResponseType(typeof(Appointment))]
-        public IHttpActionResult PostAppointment(Appointment appointment) {
-            if (!ModelState.IsValid) {
+        public IHttpActionResult PostAppointment(AppointmentsVM appointmentVM) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-
+           Appointment appointment = new Appointment();
+            appointment.appointment_reason = appointmentVM.Reason;
+            appointment.appointment_date = DateTime.Parse(appointmentVM.Time);
+            appointment.appointment_notes = appointmentVM.Notes;
+            appointment.appointment_duration = appointmentVM.Duration;
+            appointment.appointment_id = 0;
             db.Appointments.Add(appointment);
             db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = appointment.appointment_id }, appointment);
+                return CreatedAtRoute("DefaultApi", new { id = appointment.appointment_id }, appointment);
         }
 
         // DELETE: api/Appointments/5

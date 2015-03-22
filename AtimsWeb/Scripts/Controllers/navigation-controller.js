@@ -1,7 +1,7 @@
 ﻿//// Atims Web Navigation
 // Navigation is loaded after a user has successfully logged in. This controls
 //   App, Module, and Submodule navigation.
-atimsApp.controller('AtimsEnvController', function ($scope, $http, $location) {
+atimsApp.controller('NavigationController', function ($scope, $http, $location) {
     //// Variables
 
     /// Current Page / URL Handling

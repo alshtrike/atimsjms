@@ -123,7 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\atims-nav.js" />
+    <Content Include="Scripts\Controllers\navigation-controller.js" />
     <Content Include="Scripts\Controllers\appointments-controller.js" />
     <Content Include="Scripts\Controllers\housing-controller.js" />
     <Content Include="Scripts\Controllers\inmates-controller.js" />

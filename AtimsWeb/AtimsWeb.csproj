@@ -221,6 +221,7 @@
     <Content Include="Vendor\fonts\ui-grid.eot" />
     <Content Include="Vendor\fonts\ui-grid.woff" />
     <Content Include="Vendor\fonts\ui-grid.ttf" />
+    <Content Include="Views\JMS\Intake\Intake.cshtml" />
     <None Include="Views\JMS\Records\Active.cshtml" />
     <None Include="Views\JMS\Records\Appt.cshtml" />
     <Content Include="Views\JMS\Records\NewEvent.html" />

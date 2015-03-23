@@ -29,13 +29,14 @@ namespace AtimsWeb.Controllers
                 where mod.AppAO_id == id && mod.AppAO_Module_visible == 1
                 orderby mod.AppAO_Module_order
                 select new ModulesVM() {
-                    Name = mod.AppAO_Module_Name, ToolTip = mod.AppAO_Module_ToolTip,
+                    Name = mod.AppAO_Module_Name,
+                    ToolTip = mod.AppAO_Module_ToolTip,
                     SubModules = mod.AppAO_SubModules
                         .Where(sm => sm.AppAO_SubModule_visible == 1)
                         .OrderBy(sm => sm.AppAO_SubModule_order).
-                    Select(sm => new SubModuleVM() {
-                        Name = sm.AppAO_SubModule_Name, Usercontrol = sm.AppAO_SubModule_usercontrol,
-                        Help = sm.AppAO_SubModule_Help, ToolTip = sm.AppAO_SubModule_ToolTip
+                        Select(sm => new SubModuleVM() {
+                            Name = sm.AppAO_SubModule_Name, Usercontrol = sm.AppAO_SubModule_usercontrol,
+                            Help = sm.AppAO_SubModule_Help, ToolTip = sm.AppAO_SubModule_ToolTip
                     }).ToList()
                 };
 

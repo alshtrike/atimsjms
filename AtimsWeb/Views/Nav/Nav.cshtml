@@ -1,64 +1,30 @@
-﻿<div ng-controller="NavigationController as navController">
+﻿<div ng-controller="NavigationController">
     <div id="loading"></div>
     <div id="loading-hider">
     <!-- Header Nav Bar -->
     <nav class="navbar navbar-inverse navbar-over">
-        <div class="navbar-header navbar-logo pull-left">
+        <!-- Logo -->
+        <div class="navbar-header pull-left">
             Atims JMS
         </div>
-        <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle">
-            {{menuToggleText}}
-        </button>
-        <!-- TODO: Combine into directive for use with ng-repeat -->
-        <div class="navbar-header pull-right">
-            <div class="dropdown" id="messages-dropdown">
-                <!-- TODO -->
-                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                    X Messages
+        <!-- Sidebar Show/Hide Button -->
+        <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle"
+            ng-bind="menuToggleText"></button>
+        <!-- Alerts DropDown Buttons -->
+        <div class="pull-right">
+            <div class="dropdown" id="messages-dropdown" ng-repeat="alert in alertMenu">
+                <a class="btn navbar-btn" href="" data-toggle="dropdown">
+                    {{ alert.Number }} {{ alert.Type }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                     <li class="dropdown-header">
-                        Messages
+                        {{ alert.Type }}
                     </li>
                     <li><ul class="dropdown-textlink"><li><a href="#">
-                        .. messages here ..
+                        .. {{ alert.Type }} here ..
                     </a></li></ul></li>
                     <li><a class="dropdown-footer" href="#">
-                        See All Messages
-                    </a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <!-- TODO -->
-                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                    X Notifications
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                    <li class="dropdown-header">
-                        Notifications
-                    </li>
-                    <li><ul class="dropdown-textlink"><li><a href="#">
-                        .. notifications here ..
-                    </a></li></ul></li>
-                    <li><a class="dropdown-footer" href="#">
-                        See All Notifications
-                    </a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <!-- TODO -->
-                <a class="btn navbar-btn" href="#" data-toggle="dropdown">
-                    X Tasks
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                    <li class="dropdown-header">
-                        Tasks
-                    </li>
-                    <li><ul class="dropdown-textlink"><li><a href="#">
-                        .. tasks here ..
-                    </a></li></ul></li>
-                    <li><a class="dropdown-footer" href="#">
-                        See All Tasks
+                        See All {{ alert.Type }}
                     </a></li>
                 </ul>
             </div>
@@ -68,14 +34,11 @@
     <!-- Module Nav Bar -->
     <nav class="nav navbar-under">
         <div class="dropdown" ng-repeat="module in moduleMenu">
-            <button class="btn navbar-btn" data-toggle="dropdown">
-                {{module.Name}}
-            </button>
+            <button class="btn navbar-btn" data-toggle="dropdown" ng-bind="module.Name"></button>
             <ul class="dropdown-menu" role="menu">
                 <li class="dropdown-navlink" ng-repeat="subModule in module.subModuleMenu"
-                        ng-click="goToSubModule(module.Name, subModule.Name)">
-                    {{subModule.Name}}
-                </li>
+                    ng-click="goToSubModule(module.Name, subModule.Name)"
+                    ng-bind="subModule.Name"></li>
             </ul>
         </div>
     </nav>
@@ -84,14 +47,11 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    {{ selectedModule.Name }}
-                </li>
+                <li class="sidebar-brand" ng-bind="selectedModule.Name"></li>
                 <li ng-repeat="subModule in selectedModule.subModuleMenu" 
                     ng-class="{'sidebar-nav-selected': selectedModule.subModuleMenu[$index] == selectedSubModule}" 
-                    ng-click="goToSubModule(selectedModule.Name,subModule.Name)">
-                    {{ subModule.Name }}
-                </li>
+                    ng-click="goToSubModule(selectedModule.Name,subModule.Name)"
+                    ng-bind="subModule.Name"></li>
             </ul>
         </div>
         <!-- Page Content -->

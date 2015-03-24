@@ -170,6 +170,7 @@
     <Content Include="JS\Controllers\appointments-controller.js" />
     <Content Include="JS\Controllers\housing-controller.js" />
     <Content Include="JS\Controllers\inmates-controller.js" />
+    <Content Include="JS\Controllers\intake-controller.js" />
     <Content Include="JS\Services\inmates-service.js" />
     <Content Include="Content\atims-web-loader-inv.gif" />
     <Content Include="Content\atims-web-loader.gif" />
@@ -231,12 +232,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CS\Controllers\AppointmentsController.cs" />
+    <Compile Include="CS\Controllers\FacilitiesController.cs" />
     <Compile Include="CS\Controllers\InmatesController.cs" />
     <Compile Include="CS\Models\Appointment.cs" />
     <Compile Include="CS\Models\Facility.cs" />
     <Compile Include="CS\Models\Inmate.cs" />
     <Compile Include="CS\Models\Person.cs" />
     <Compile Include="CS\ViewModels\AppointmentsVM.cs" />
+    <Compile Include="CS\ViewModels\FacililtiesVM.cs" />
     <Compile Include="CS\ViewModels\InmateVM.cs" />
     <Compile Include="CS\WebApiConfig.cs" />
     <Compile Include="CS\Controllers\ModulesController.cs" />

@@ -40,7 +40,7 @@ namespace AtimsWeb.Controllers {
                     MiddleName = inmate.Person.person_middle_name,
                     LastName = inmate.Person.person_last_name,
                     Age= inmate.Person.person_age,
-                    DOB = inmate.Person.person_dob,
+                    Dob = inmate.Person.person_dob,
                     FacilityName = inmate.Facility.Facility_Name,
                     Recieved = inmate.inmate_received_date,
                     Release = inmate.inmate_scheduled_release_date,
@@ -65,10 +65,10 @@ namespace AtimsWeb.Controllers {
             person.person_first_name = inmateVM.FirstName;
             person.person_last_name = inmateVM.LastName;
             person.person_middle_name = inmateVM.MiddleName;
-            person.person_dob = inmateVM.DOB;
+            person.person_dob = inmateVM.Dob;
             person.person_id = 0;
             db.Person.Add(person);
-            db.SaveChanges();
+            
 
             Inmate inmate = new Inmate();
             inmate.inmate_number = inmateVM.Number;
@@ -84,7 +84,7 @@ namespace AtimsWeb.Controllers {
             inmate.inmate_id = 0;
             db.Inmate.Add(inmate);
             db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { id = inmate.inmate_id }, inmate);
+            return CreatedAtRoute("DefaultApi", new { controller = "person", id = inmate.inmate_id }, inmate);
         }
 
     }

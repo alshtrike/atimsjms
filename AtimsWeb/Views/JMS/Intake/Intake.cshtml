@@ -1,63 +1,63 @@
-﻿<div ng-controller="IntakeController">
+﻿<form ng-controller="IntakeController">
     <div class="form-group">
         <label class="col-sm-2 control-label">Inmate Number</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" min="1" />
+            <input type="number" class="form-control" min="1" ng-model="newInmate.Number"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">First Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" ng-model="newInmate.FirstName" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Middle Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" ng-model="newInmate.MiddleName" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Last Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" ng-model="newInmate.LastName" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Age</label>
         <div class="col-sm-10">
-            <input type="number" class="form-control" min="1" />
+            <input type="number" class="form-control" min="1" ng-model="newInmate.Age" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Date of Birth</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" ng-model="newInmate.Dob" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Date Recieved</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" ng-model="newInmate.Recieved" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Date Released</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" />
+            <input type="date" class="form-control" ng-model="newInmate.Released" />
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Status</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" />
+            <input type="text" class="form-control" ng-model="newInmate.Status" />
         </div>
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label class="col-sm-2 control-label">Facility</label>
         <div class="col-lg-6">
             <div class="input-group">
-                <input type="text" class="form-control" aria-label="..." ng-model="selectedFac">
+                <input type="text" class="form-control" aria-label="..." ng-model="newFac">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
@@ -66,6 +66,19 @@
                 </div>
             </div>
         </div>
+    </div>-->
+    <div class="form-group">
+        <label for="age" class="col-sm-2 control-label">Facility:</label>
+        <div class="col-sm-10">
+            <select ng-model="newInmate.FacilityName" ng-options=" fac.FacilityName as fac.FacilityName for fac in facilities">
+                <!--track by facility.ID-->
+                <option value="">--Choose Facility--</option>
+            </select>
+        </div>
     </div>
-</div>
+    <br />
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" ng-click="addInmate()" class="btn btn-default" value="Submit Form"/>
+    </div>
+</form>
 

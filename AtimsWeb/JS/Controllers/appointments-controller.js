@@ -147,27 +147,30 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
         //modal Controller
         atimsApp.controller('newEventModalController', function ($scope, $modalInstance) {
             $scope.today = function () {
-                $scope.dt = new Date();
+                //$scope.dt = new Date();
                 $scope.start = new Date();
                 $scope.end = new Date();
             };
             $scope.today();
-
-            $scope.clear = function () {
-                $scope.dt = null;
+            $scope.changeStart = function () {
+                if ($scope.start.getTime() > $scope.end.getTime()) {
+                    $scope.end.setTime($scope.start.getTime());
+                }
             };
 
             $scope.add = function (Event) {
                 console.log("start: "+$scope.start);
                 console.log("end: "+$scope.end);
-                console.log("dt: " + $scope.dt);
+                //console.log("dt: " + $scope.dt);
                 console.log("title: " + $scope.title);
                 console.log("reason: " + $scope.reason);
-                var startDate = new Date();
-                startDate.setDate($scope.dt.getDate());
+                /*var startDate = new Date();
+                startDate.setDate($scope.start.getDate());
+                startDate.setMonth($scope.dt.getMonth());
+                startDate.setYear($scope.dt.getYear());
                 startDate.setHours($scope.start.getHours());
-                startDate.setMinutes($scope.start.getMinutes());
-                eventDate = startDate.toISOString().slice(0, 19);
+                startDate.setMinutes($scope.start.getMinutes());*/
+                eventDate = $scope.start.toISOString().slice(0, 19); 
                 var duration = ($scope.end.getHours() * 60 + $scope.end.getMinutes())
                     - ($scope.start.getHours() * 60 + $scope.start.getMinutes());
                 console.log("start: "+eventDate);

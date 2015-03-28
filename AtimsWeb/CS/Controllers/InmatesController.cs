@@ -51,14 +51,14 @@ namespace AtimsWeb.Controllers {
         }
 
         // POST: api/Inmates
-       [Route("api/Inmates")]
+       [Route("api/Inmates",Name="inmatePost")]
         [HttpPost]
         [ResponseType(typeof(Inmate))]
-        public void PostInmate([FromBody]Inmate inmate)
+        public async Task<IHttpActionResult> PostInmate([FromBody]Inmate inmate)
         {
             if (!ModelState.IsValid)
             {
-              // return BadRequest(ModelState);
+               return BadRequest(ModelState);
             }
             
           /* Person person = new Person();
@@ -87,9 +87,9 @@ namespace AtimsWeb.Controllers {
             //inmate.inmate_id = 0;
 
             db.Inmate.Add(inmate);
-            db.SaveChangesAsync();
+           await db.SaveChangesAsync();
 
-          // return CreatedAtRoute("DefaultApi", new { id = inmate.inmate_id }, inmate);
+           return CreatedAtRoute("inmatePost", new { id = inmate.inmate_id }, inmate);
         }
 
     }

@@ -21,6 +21,7 @@ namespace AtimsWeb.CS.Controllers
                 orderby fac.Facility_Name
                 select new FacilitiesVM()
                 {
+                    FacilityId=fac.Facility_id,
                     FacilityName = fac.Facility_Name
                 };
 

@@ -6,6 +6,7 @@ using AtimsWeb.Models;
 
 namespace AtimsWeb.ViewModels {
     public class FacilitiesVM {
+        public int FacilityId; 
         public string FacilityName;
     }
 }

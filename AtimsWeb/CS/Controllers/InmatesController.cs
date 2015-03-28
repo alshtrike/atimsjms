@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AtimsWeb.Models;
 using AtimsWeb.ViewModels;
+using System.Threading.Tasks;
 
 namespace AtimsWeb.Controllers {
 
@@ -50,25 +51,27 @@ namespace AtimsWeb.Controllers {
         }
 
         // POST: api/Inmates
-        [Route("api/Inmates")]
+       [Route("api/Inmates")]
         [HttpPost]
         [ResponseType(typeof(Inmate))]
-        public IHttpActionResult PostInmate(InmateVM inmateVM)
+        public void PostInmate([FromBody]Inmate inmate)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+              // return BadRequest(ModelState);
             }
             
-            Person person = new Person();
+          /* Person person = new Person();
             person.person_age = inmateVM.Age;
             person.person_first_name = inmateVM.FirstName;
             person.person_last_name = inmateVM.LastName;
             person.person_middle_name = inmateVM.MiddleName;
             person.person_dob = inmateVM.Dob;
-            person.person_id = 0;
+           // person.person_id = 0;
             db.Person.Add(person);
-            
+            db.SaveChanges();
+            CreatedAtRoute("DefaultApi", new { id = person.person_id }, person);
+
 
             Inmate inmate = new Inmate();
             inmate.inmate_number = inmateVM.Number;
@@ -76,15 +79,17 @@ namespace AtimsWeb.Controllers {
             inmate.inmate_scheduled_release_date = inmateVM.Release;
             inmate.inmate_status = inmateVM.Status;
 
-            inmate.person_id = person.person_id;
+            //inmate.person_id = person.person_id;
 
             var query = from f in db.Facility where f.Facility_Name.Equals(inmateVM.FacilityName) select f.Facility_id;
             inmate.Facility_id = query.FirstOrDefault();
+           */
+            //inmate.inmate_id = 0;
 
-            inmate.inmate_id = 0;
             db.Inmate.Add(inmate);
-            db.SaveChanges();
-            return CreatedAtRoute("DefaultApi", new { controller = "person", id = inmate.inmate_id }, inmate);
+            db.SaveChangesAsync();
+
+          // return CreatedAtRoute("DefaultApi", new { id = inmate.inmate_id }, inmate);
         }
 
     }

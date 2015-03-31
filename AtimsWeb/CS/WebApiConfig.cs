@@ -13,9 +13,10 @@ namespace AtimsWeb {
             //   on a per api-function basis. This file may be rendered
             //   unnecesary.
             config.MapHttpAttributeRoutes();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

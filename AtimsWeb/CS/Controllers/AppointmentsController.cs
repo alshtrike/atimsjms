@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using AtimsWeb.Models;
 using AtimsWeb.ViewModels;
+using System.Threading.Tasks;
 
 namespace AtimsWeb.Controllers {
 
@@ -84,10 +85,11 @@ namespace AtimsWeb.Controllers {
         }
 
         // POST: api/Appointments
-        [Route("api/Appointments")]
+        [Route("api/Appointments",Name="appointmetPost")]
         [HttpPost]
        [ResponseType(typeof(Appointment))]
-        public IHttpActionResult PostAppointment(AppointmentsVM appointmentVM) {
+        public async Task<IHttpActionResult> PostAppointment(AppointmentsVM appointmentVM)
+        {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -99,8 +101,8 @@ namespace AtimsWeb.Controllers {
             appointment.appointment_duration = appointmentVM.Duration;
             appointment.appointment_id = 0;
             db.Appointments.Add(appointment);
-            db.SaveChanges();
-                return CreatedAtRoute("DefaultApi", new { id = appointment.appointment_id }, appointment);
+            await db.SaveChangesAsync();
+            return CreatedAtRoute("appointmetPost", new { id = appointment.appointment_id }, appointment);
         }
 
         // DELETE: api/Appointments/5

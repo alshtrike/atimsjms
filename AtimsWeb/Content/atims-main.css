@@ -41,7 +41,7 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    padding: 0px 10px 0 10px;
+    padding: 0px 10px 0px 10px;
     z-index: 1050;
     border-top: 2px solid #222222;
     border-bottom: 1px solid #080808;
@@ -59,23 +59,25 @@ body {
     border-bottom: 3px solid #080808;
 }
 
-.navbar-logo {
-    float: left;
-    padding: 4px 25px 0 15px;
-    color: #EEEEEE;
-    font-weight: bolder;
-    font-size: 26px;
-}
-
-.navbar-inverse .navbar-btn,
+.navbar-over .navbar-btn,
 .navbar-under .navbar-btn{
     background-color: #222222;
     border-color: #333333;
     color: #CCCCCC;
+    margin: 5px 3px 2px 3px;
 }
 
-.navbar-under .navbar-btn{
-    margin: 5px 3px 0px 3px;
+.navbar-over .navbar-btn {
+    margin-top: 6px;
+}
+
+.navbar-over .navbar-header{
+    float: left;
+    padding: 3px 10px 4px 10px;
+    color: #EEEEEE;
+    font-weight: bolder;
+    font-size: 26px;
+    margin: 0 0 0 0;
 }
 
 .navbar-inverse .navbar-btn:hover {
@@ -105,7 +107,7 @@ body {
 
 .dropdown-header {
     background-color: #FFFFFF;
-    padding: 7px 10px;
+    padding: 8px 10px;
     border-bottom: 1px solid #F4F4F4;
     color: #444444;
     font-size: 14px;
@@ -155,7 +157,7 @@ body {
     overflow: hidden;
     background-color: #FFFFFF;
     padding: 0 0 5px 0;
-    border-top: 5px solid #EEEEEE;
+    border-top: 3px solid #EEEEEE;
     border-bottom: 5px solid #EEEEEE;
 }
 
@@ -164,7 +166,7 @@ body {
     top: 0;
     bottom: 0;
     left: 0;
-    width: 180px;
+    width: 130px;
     z-index: 1020;
     overflow-y: auto;
     overflow-x: hidden;
@@ -186,7 +188,7 @@ body {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 180px;
+    left: 130px;
     right: 0;
     padding: 10px 10px 10px 10px;
     overflow: auto;
@@ -202,15 +204,15 @@ body {
 }
 
 .sidebar-nav {
-    width: 170px;
+    width: 120px;
     margin: 0;
     padding-left: 0;
     list-style: none;
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 35px;
+    text-indent: 15px;
+    line-height: 30px;
     display: block;
     text-decoration: none;
     color: #111111;
@@ -230,15 +232,11 @@ body {
 }
 
 .sidebar-nav .sidebar-brand {
-    padding-top: 5px;
-    height: 50px;
+    height: 37px;
     font-size: 20px;
-    line-height: 40px;
+    line-height: 35px;
     text-align: center;
     text-indent: 0;
     border-top: 0 solid;
 }
 /* End Sidebar Nav */
-.input-append .btn.dropdown-toggle {
-    float: none;
-}

@@ -12,7 +12,7 @@ namespace AtimsWeb.ViewModels {
         public string MiddleName;
         public string LastName;
         public short? Age;
-        public DateTime? DOB;
+        public DateTime? Dob;
         public string FacilityName;
         public DateTime? Recieved;
         public DateTime? Release;

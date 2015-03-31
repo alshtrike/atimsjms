@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-7">
             <div style="display:inline-block; min-height:290px;">
-                <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                <datepicker ng-model="start" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
                 <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
             </div>
         </div>
@@ -16,10 +16,10 @@
                         <label>Description</label>
                         <input type="text" ng-model="reason" placeholder="Describe Me" />
                         <label>Start:</label>
-                        <timepicker ng-model="start" ng-change="changed()"></timepicker>
+                        <timepicker ng-model="start" ng-change="changeStart()"></timepicker>
                         <label>End:</label>
-                        <timepicker ng-model="end" ng-change="changed()"></timepicker>
-                {{dt}}<br />{{start}}<br />{{end}}<br />
+                        <timepicker ng-model="end" ng-change="changeEnd()"></timepicker>
+                <br />{{start}}<br />{{end}}<br />
             </div>
         </div>
     </div>

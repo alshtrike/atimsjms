@@ -7,32 +7,34 @@
         <div class="navbar-header pull-left">
             Atims JMS
         </div>
-        <!-- Sidebar Show/Hide Button -->
-        <button class="btn navbar-btn pull-left" ng-click="menuToggle( )" id="menu-toggle"
-            ng-bind="menuToggleText"></button>
         <!-- Alerts DropDown Buttons -->
-        <div class="pull-right">
-            <div class="dropdown" id="messages-dropdown" ng-repeat="alert in alertMenu">
-                <a class="btn navbar-btn" href="" data-toggle="dropdown">
-                    {{ alert.Number }} {{ alert.Type }}
-                </a>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                    <li class="dropdown-header">
-                        {{ alert.Type }}
-                    </li>
-                    <li><ul class="dropdown-textlink"><li><a href="#">
-                        .. {{ alert.Type }} here ..
-                    </a></li></ul></li>
-                    <li><a class="dropdown-footer" href="#">
-                        See All {{ alert.Type }}
-                    </a></li>
-                </ul>
-            </div>
+        <div class="dropdown pull-right" id="messages-dropdown" ng-repeat="alert in alertMenu">
+            <a class="btn navbar-btn" href="" data-toggle="dropdown">
+                {{ alert.Number }} {{ alert.Type }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                <li class="dropdown-header">
+                    {{ alert.Type }}
+                </li>
+                <li><ul class="dropdown-textlink"><li><a href="#">
+                    .. {{ alert.Type }} here ..
+                </a></li></ul></li>
+                <li><a class="dropdown-footer" href="#">
+                    See All {{ alert.Type }}
+                </a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Module Nav Bar -->
     <nav class="nav navbar-under">
+        <!-- Sidebar Show/Hide Button -->
+        <button class="btn navbar-btn pull-left glyphicon glyphicon-arrow-left"
+            ng-click="subMenuToggle( )" id="sub-menu-toggle"></button>
+        <!-- MainNav Show/Hide Button -->
+        <button class="btn navbar-btn pull-left glyphicon glyphicon-arrow-up"
+             ng-click="headerMenuToggle( )" id="header-menu-toggle"></button>
+        <!-- Nav Buttons -->
         <div class="dropdown" ng-repeat="module in moduleMenu">
             <button class="btn navbar-btn" data-toggle="dropdown" ng-bind="module.Name"></button>
             <ul class="dropdown-menu" role="menu">
@@ -42,14 +44,14 @@
             </ul>
         </div>
     </nav>
-
+        
     <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand" ng-bind="selectedModule.Name"></li>
+        <div id="sub-menu-wrapper">
+            <ul class="sub-menu-nav">
+                <li class="sub-menu-brand" ng-bind="selectedModule.Name"></li>
                 <li ng-repeat="subModule in selectedModule.subModuleMenu" 
-                    ng-class="{'sidebar-nav-selected': selectedModule.subModuleMenu[$index] == selectedSubModule}" 
+                    ng-class="{'selected': selectedModule.subModuleMenu[$index] == selectedSubModule}" 
                     ng-click="goToSubModule(selectedModule.Name,subModule.Name)"
                     ng-bind="subModule.Name"></li>
             </ul>
@@ -57,8 +59,8 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid page-padding" ng-include="page" onload="pageLoaded()"></div>
-            <p style="color:#AAAAAA;">Current Page: {{page}}</p>
         </div>
     </div>
+
     </div>
 </div>

@@ -57,6 +57,7 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
     $scope.alertMenu = UserService.alerts;
 
 
+
     //// App / Module and SubModule Loading Functions
     
     /// Loading the App
@@ -111,10 +112,10 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
         // At this point: App, Modules, and SubModules have been successfully loaded
         //   @TODO: Implement individual app home pages
         $scope.checkUrl(null);
-        //   Ensure webpage is snapped in place
-        $scope.resizeHandler();
         //   Hide loading screen and show website
         $scope.showLoading(false);
+        //   Ensure webpage is snapped in place
+        $scope.resizeHandler();
     };
 
 
@@ -134,6 +135,7 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
     //   module/subModule pair into the menu's, and then passes the subModules
     //   link to displayPage
     var displaySubModule = function (moduleName, subModuleName) {
+
         // Find the requested module
         var module = $scope.moduleNameMap[moduleName];
         if (module == undefined) {
@@ -146,6 +148,7 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
         var subModule = module.subModuleNameMap[subModuleName]
         if (subModule == undefined) {
             display404("SubModule not found: " + moduleName + "/" + subModuleName);
+            $scope.selectedSubModule = null;
             return;
         }
         $scope.selectedSubModule = subModule;
@@ -181,7 +184,7 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
     // goToSubModule(moduleName, subModuleName) is used inside the web pages for link
     //   urls. This is equivalent to href="#/moduleName/subModuleName/"
     $scope.goToSubModule = function (moduleName, subModuleName) {
-        $location.path("/" + moduleName + "/" + subModuleName);
+        $location.path("/" + moduleName + "/" + subModuleName + "/");
     };
     // Displays the users personal home page
     $scope.goToHome = function () {
@@ -201,7 +204,7 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
         }else{
             var path = $location.path().split('/');
             displaySubModule(path[1], path[2]);
-        }
+        };
     };
     // This links the event and function for when the URL has changed.
     $scope.$on('$locationChangeSuccess', $scope.checkUrl);
@@ -210,11 +213,19 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
     //// Window Styling - CSS Synergy
     // @TODO: Implement CSS changes for highlighting current module
     //    (see index.html for subModule highlighting)
-    // SubModule Menu Toggle
-    $scope.menuToggleText = "<<";
-    $scope.menuToggle = function () {
+    // Header Menu Toggle
+    $scope.headerMenuToggle = function () {
+        /* TODO
         $("#wrapper").toggleClass("toggled");
-        $scope.menuToggleText = ($scope.menuToggleText === "<<")? ">>" : "<<";
+        $("#wrapper").toggleClass("glyphicon-arrow-left");
+        $("#wrapper").toggleClass("glyphicon-arrow-right");
+        */
+    };
+    // SubModule Menu Toggle
+    $scope.subMenuToggle = function () {
+        $("#wrapper").toggleClass("toggled");
+        $("#wrapper").toggleClass("glyphicon-arrow-left");
+        $("#wrapper").toggleClass("glyphicon-arrow-right");
     };
     // Shows or Hides the full page loading screen
     $scope.showLoading = function (toShow) {

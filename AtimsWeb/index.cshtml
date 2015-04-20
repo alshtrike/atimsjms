@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 
-<html ng-app="atimsApp" ng-controller="AtimsAppController as atimsAppCtrl">
+<html ng-app="atimsApp">
 
 <head>
-
     <meta name="viewport" content="width=device-width" />
     <title ng-bind="pageTitle"></title>
     
-<!-- Vendor Libraries -->
-    <!-- AngularJS -->
-    <script src="~/scripts/angular.min.js"></script>
-    <script src="~/scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <!-- Vendor Libraries -->
     <!-- JQuery -->
     <script src="~/scripts/jquery-2.1.3.js"></script>
     <!-- Bootstrap-->
     <script src="~/scripts/bootstrap.min.js"></script>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <!-- AngularJS -->
+    <script src="~/scripts/angular.min.js"></script>
+    <script src="~/scripts/angular-route.min.js"></script>
+    <script src="~/scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/scripts/angular-ui/ui-utils-ieshiv.min.js"></script>
+    <script src="~/scripts/angular-ui/ui-utils.js"></script>
     <!-- UI-Grid -->
     <script src="~/scripts/ui-grid-unstable.min.js"></script>
     <link href="~/Content/ui-grid-unstable.min.css" rel="stylesheet" />
@@ -31,21 +33,25 @@
     <!-- Atims App -->
     <script src="~/JS/atims-app.js"></script>
     <link href="~/Content/atims-main.css" rel="stylesheet" />
+    <!-- -->
     
     <!-- Services -->
     <script src="~/JS/Services/inmates-service.js"></script>
     <script src="~/JS/Services/user-service.js"></script>
+    <!-- -->
+
     <!-- Controllers -->
     <script src="~/JS/Controllers/navigation-controller.js"></script>
     <script src="~/JS/Controllers/inmates-controller.js"></script>
     <script src="~/JS/Controllers/appointments-controller.js"></script>
     <script src="~/JS/Controllers/housing-controller.js"></script>
     <script src="~/js/controllers/intake-controller.js"></script>
+    <!-- -->
 
 
 </head>
 
-<body ng-include="userPage"></body>
+<body ng-controller="AtimsAppController" ng-include="userPage"></body>
 
 </html>
 

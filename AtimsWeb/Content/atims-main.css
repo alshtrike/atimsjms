@@ -38,56 +38,56 @@ body {
 
 /* Navbar Menus */
 .navbar-over {
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
-    padding: 0px 10px 0px 10px;
     z-index: 1050;
+    padding: 4px 10px 4px 10px;
     border-top: 2px solid #222222;
-    border-bottom: 1px solid #080808;
+    border-bottom: 1px solid #111111;
 }
 
 .navbar-under {
-    position: fixed;
-    top: 50px;
+    position: absolute;
     left: 0;
     right: 0;
-    min-height: 45px;
+    min-height: 32px;
     text-align: center;
     z-index: 1040;
     background-color: #222222;
-    border-bottom: 3px solid #080808;
+    border-bottom: 2px solid #111111;
 }
 
 .navbar-over .navbar-btn,
-.navbar-under .navbar-btn{
+.navbar-under .navbar-btn {
     background-color: #222222;
     border-color: #333333;
     color: #CCCCCC;
-    margin: 5px 3px 2px 3px;
 }
+
 
 .navbar-over .navbar-btn {
-    margin-top: 6px;
+    margin: 3px 2px 0px 2px;
+    padding: 5px 11px 5px 11px;
 }
 
-.navbar-over .navbar-header{
-    float: left;
-    padding: 3px 10px 4px 10px;
-    color: #EEEEEE;
-    font-weight: bolder;
-    font-size: 26px;
-    margin: 0 0 0 0;
+.navbar-under .navbar-btn{
+    margin: 2px 3px 0px 3px;
+    padding: 3px 8px 3px 8px;
 }
 
-.navbar-inverse .navbar-btn:hover {
+.navbar-over .navbar-btn:hover,
+.navbar-under .navbar-btn:hover {
     color: #ffffff;
     background-color: #333333;
 }
 
-.navbar-under .navbar-btn:hover {
-    color: #ffffff;
-    background-color: #444444;
+.navbar-over .navbar-header{
+    float: left;
+    padding: 0 10px 0 10px;
+    color: #EEEEEE;
+    font-weight: bolder;
+    font-size: 26px;
 }
 /* End Navbar Menus */
 
@@ -100,6 +100,7 @@ body {
 .dropdown-menu {
     z-index: 2000;
     min-width: 0;
+    margin-top: 0;
     padding: 0 0 0 0;
     border: 2px solid #DDDDDD;
     border-radius: 2px;
@@ -149,19 +150,19 @@ body {
 
 /* Sidebar Nav */
 #wrapper {
-    position: fixed;
-    top: 97px;
+    position: absolute;
+    top: 100px;
     bottom: 0;
     left: 0;
     right: 0;
     overflow: hidden;
     background-color: #FFFFFF;
-    padding: 0 0 5px 0;
+    padding: 0 0 0 0;
     border-top: 3px solid #EEEEEE;
     border-bottom: 5px solid #EEEEEE;
 }
 
-#sidebar-wrapper {
+#sub-menu-wrapper {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -180,8 +181,8 @@ body {
     transition: width 1s ease;
 }
 
-#wrapper.toggled #sidebar-wrapper {
-    width: 0;
+#wrapper.toggled #sub-menu-wrapper {
+    width: 1px;
 }
 
 #page-content-wrapper {
@@ -190,7 +191,7 @@ body {
     bottom: 0;
     left: 130px;
     right: 0;
-    padding: 10px 10px 10px 10px;
+    padding: 0 0 0 0;
     overflow: auto;
     background-color: #FFFFFF;
     -webkit-transition: left 1s ease;
@@ -200,43 +201,50 @@ body {
 }
 
 #wrapper.toggled #page-content-wrapper {
-    left: 10px;
+    left: 11px;
 }
 
-.sidebar-nav {
+.sub-menu-nav {
     width: 120px;
-    margin: 0;
+    background-color: #EEEEEE;
     padding-left: 0;
     list-style: none;
 }
 
-.sidebar-nav li {
+.sub-menu-nav li {
     text-indent: 15px;
-    line-height: 30px;
     display: block;
     text-decoration: none;
     color: #111111;
+    padding: 1px 0 0 0;
     border-top: 1px solid #FFFFFF;
     border-bottom: 1px solid #DDDDDD;
 }
 
-.sidebar-nav li:hover {
+.sub-menu-nav li:hover {
     text-decoration: none;
     color: #000000;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
 
-.sidebar-nav-selected {
+.sub-menu-nav .selected {
     background: #B2C2E0;
 }
 
-.sidebar-nav .sidebar-brand {
-    height: 37px;
-    font-size: 20px;
-    line-height: 35px;
+.sub-menu-brand {
+    font-size: 18px;
     text-align: center;
     text-indent: 0;
-    border-top: 0 solid;
+    padding: 2px 0 2px 0;
+    border-top: 2px solid #FFFFFF;
+    border-bottom: 2px solid #DDDDDD;
 }
 /* End Sidebar Nav */
+
+
+/* TODO: Name Me CSS */
+.input-append .btn.dropdown-toggle {
+    float: none;
+}
+/* End Name Me CSS */

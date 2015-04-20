@@ -37,6 +37,7 @@ atimsApp.controller('InmatesController',  function ($scope,$http,InmatesService)
     var loadInmates = function (data){
         $scope.gridOptions.data = data;
     };
+
     $scope.export = function(){
         if ($scope.export_format == 'csv') {
             var myElement = angular.element(document.querySelectorAll(".custom-csv-link-location"));

@@ -188,8 +188,6 @@
     <Content Include="index.cshtml" />
     <Content Include="JS\Services\user-service.js" />
     <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular-route.js" />
-    <Content Include="scripts\angular-route.min.js" />
     <Content Include="scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="scripts\angular-ui\ui-bootstrap.js" />
@@ -216,7 +214,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="scripts\angular-route.min.js.map" />
     <None Include="scripts\jquery-1.9.0.intellisense.js" />
     <None Include="scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="scripts\jquery-2.1.3.js" />

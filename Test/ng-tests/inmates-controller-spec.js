@@ -82,8 +82,8 @@ describe('Controller: InmatesController', function() {
 
         ctrl = $controller('InmatesController',
                 { $scope: scope, InmatesService: InmatesService });
-        //scope.gridOptions.data = InmatesService.data;
-        ctrl.loadInmates(InmatesService.data);
+        scope.gridOptions.data = InmatesService.data;
+        //ctrl.loadInmates(InmatesService.data);
         scope.$digest();
     }));
 

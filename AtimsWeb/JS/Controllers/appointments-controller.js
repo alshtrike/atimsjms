@@ -127,18 +127,22 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
                     height: 450,
                     editable: true,
                     header: {
-                        left: 'title',
+                        left: 'month basicWeek basicDay agendaWeek agendaDay',
                         center: '',
                         right: 'today prev,next'
                     },
-                    eventClick: $scope.alertOnEventClick,
+                    eventClick: function (calEvent, jsEvent, view) {
+                        console.log("test");
+                    },
                     eventDrop: $scope.alertOnDrop,
                     eventResize: $scope.alertOnResize,
                     eventRender: $scope.eventRender
                 }
             };
 
-
+            $scope.onEventClick = function (calEvent, jsEvent, view) {
+                console.log("test");
+            }
             // event sources array
             $scope.eventSources = [$scope.events];
             loadCalendar();
@@ -164,12 +168,6 @@ atimsApp.controller('calendarController', function ($scope, $modal, $compile, $h
                 //console.log("dt: " + $scope.dt);
                 console.log("title: " + $scope.title);
                 console.log("reason: " + $scope.reason);
-                /*var startDate = new Date();
-                startDate.setDate($scope.start.getDate());
-                startDate.setMonth($scope.dt.getMonth());
-                startDate.setYear($scope.dt.getYear());
-                startDate.setHours($scope.start.getHours());
-                startDate.setMinutes($scope.start.getMinutes());*/
                 eventDate = $scope.start.toISOString().slice(0, 19); 
                 var duration = ($scope.end.getHours() * 60 + $scope.end.getMinutes())
                     - ($scope.start.getHours() * 60 + $scope.start.getMinutes());

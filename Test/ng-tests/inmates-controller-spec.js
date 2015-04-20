@@ -82,16 +82,19 @@ describe('Controller: InmatesController', function() {
 
         ctrl = $controller('InmatesController',
                 { $scope: scope, InmatesService: InmatesService });
-        scope.gridOptions.data = InmatesService.data;
+        //scope.gridOptions.data = InmatesService.data;
+        ctrl.loadInmates(InmatesService.data);
         scope.$digest();
     }));
 
-    it('should have scope.gridOptions to be defined', function(){
+    it('should have scope.gridOptions to be defined', function () {
+        console.log(scope.gridOptions);
         expect(scope.gridOptions).toBeDefined();
     });
 
     it('should have inmate values loaded at startup', function () {
-        var data = InmatesService.getActiveInmates();
+        var data = InmatesService.data;
+        console.log(data);
         expect(scope.gridOptions.data[0].firstName).toEqual('Fred');
         expect(scope.gridOptions.data[2].number).toEqual(34567);
     });

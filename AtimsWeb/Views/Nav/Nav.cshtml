@@ -4,8 +4,8 @@
     <!-- Header Nav Bar -->
     <nav class="navbar navbar-inverse navbar-over">
         <!-- Logo -->
-        <div class="navbar-header pull-left">
-            Atims JMS
+        <div class="navbar-header pull-left home-over" >
+           Atims JMS
         </div>
         <!-- Alerts DropDown Buttons -->
         <div class="dropdown pull-right" id="messages-dropdown" ng-repeat="alert in alertMenu">
@@ -34,6 +34,8 @@
         <!-- MainNav Show/Hide Button -->
         <button class="btn navbar-btn pull-left glyphicon glyphicon-arrow-up"
              ng-click="headerMenuToggle( )" id="header-menu-toggle"></button>
+        <button class="btn navbar-btn pull-left glyphicon glyphicon-home"
+                ng-click="goToHome( )" id="home-button"></button>
         <!-- Nav Buttons -->
         <div class="dropdown" ng-repeat="module in moduleMenu">
             <button class="btn navbar-btn" data-toggle="dropdown" ng-bind="module.Name"></button>

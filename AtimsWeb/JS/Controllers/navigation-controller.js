@@ -224,8 +224,8 @@ atimsApp.controller('NavigationController', function ($scope, $http, $location, 
     // SubModule Menu Toggle
     $scope.subMenuToggle = function () {
         $("#wrapper").toggleClass("toggled");
-        $("#wrapper").toggleClass("glyphicon-arrow-left");
-        $("#wrapper").toggleClass("glyphicon-arrow-right");
+        $("#sub-menu-toggle").toggleClass("glyphicon-arrow-right");
+       
     };
     // Shows or Hides the full page loading screen
     $scope.showLoading = function (toShow) {

@@ -1,0 +1,23 @@
+﻿<div ng-controller="IntakeController">
+   <div id="progress">
+       <div class="completion">
+           <nav class="form-step">
+               <ul>
+                   <li><a ng-click="jumpToSection(1)">1</a></li>
+                   <li><a  ng-click="jumpToSection(2)">2</a></li>
+                   <li><a  ng-click="jumpToSection(3)">3</a></li>
+                   <li><a  ng-click="jumpToSection(4)">4</a></li>
+                   <li><a  ng-click="jumpToSection(5)">5</a></li>
+                   <li><a  ng-click="jumpToSection(6)">6</a></li>
+               </ul>
+           </nav>
+           
+       </div>
+   </div>
+    <div ng-include="prebookSection">
+        
+    </div>
+    <input type="button" value="Previous" ng-click="updateProgress('previous')" />
+    <input type="button" value="Next" ng-click="updateProgress('next')" />
+</div>
+

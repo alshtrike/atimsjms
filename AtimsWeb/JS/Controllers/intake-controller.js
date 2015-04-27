@@ -41,9 +41,10 @@
         $scope.prebookSection = "Views/JMS/Intake/PreBook"+currentPage+".cshtml";
     }
     $scope.jumpToSection = function (section) {
+        currentPage = section;
         width = 85 * section;
         $('.completion').animate({ 'width': width + 'px' }, 1500);
-        $scope.prebookSection = "Views/JMS/Intake/PreBook" + section + ".cshtml";
+        $scope.prebookSection = "Views/JMS/Intake/PreBook" + currentPage + ".cshtml";
     }
   }
 );

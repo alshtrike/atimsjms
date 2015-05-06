@@ -1,4 +1,84 @@
-﻿<div >
- Page6
-</div>
+﻿<form name="intakeForm">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Inmate Number</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control validate" min="1" ng-model="newInmate.inmate_number" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control validate" ng-model="newInmate.Person.person_first_name" ng-pattern="/^[a-zA-Z]*$/" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Middle Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control validate" ng-model="newInmate.Person.person_middle_name" ng-pattern="/^[a-zA-Z]*$/" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control validate" ng-model="newInmate.Person.person_last_name" ng-pattern="/^[a-zA-Z]*$/" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Age</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control validate" min="1" ng-model="newInmate.Person.person_age" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Date of Birth</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" ng-model="newInmate.Person.person_dob" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Date Recieved</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" ng-model="newInmate.received_date" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Date Released</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control " ng-model="newInmate.inmate_scheduled_release_date" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Active?</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control validate" min="0" max="1" ng-model="newInmate.inmate_active" required />
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="col-sm-2 control-label">Facility</label>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="..." ng-model="newFac">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li ng-repeat="fac in facilities" ng-click="changeFac(fac)"><a>{{fac.FacilityName}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label for="age" class="col-sm-2 control-label">Facility:</label>
+        <div class="col-sm-10">
+            <select ng-model="newInmate.Facility_id" ng-options=" fac.FacilityId as fac.FacilityName for fac in facilities" required>
+                <!--track by facility.ID-->
+                <option value="">--Choose Facility--</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="submit" ng-click="addInmate()" ng-disabled="preBookForm.$invalid" class="btn btn-default" value="Submit Form" />
+    </div>
+</form>
 

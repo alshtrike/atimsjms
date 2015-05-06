@@ -1,4 +1,16 @@
-﻿<div >
- Page5
-</div>
+﻿
+    <div class="form-group">
+        <label for="age" class="col-sm-2 control-label">Facility:</label>
+        <div class="col-sm-10">
+            <select ng-model="newInmate.Facility_id" ng-options=" fac.FacilityId as fac.FacilityName for fac in facilities" required>
+                <!--track by facility.ID-->
+                <option value="">--Choose Facility--</option>
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="col-sm-offset-2 col-sm-10">
+        <input type="button" value="Previous" class="btn btn-default"  ng-click="updateProgress('previous')" />
+        <input type="submit" ng-click="updateProgress('next')" ng-disabled="preBookForm.$invalid" class="btn btn-default" value="Next" />
+    </div>
 

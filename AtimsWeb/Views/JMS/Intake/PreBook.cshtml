@@ -10,14 +10,11 @@
                    <li><a  ng-click="jumpToSection(5)">5</a></li>
                    <li><a  ng-click="jumpToSection(6)">6</a></li>
                </ul>
-           </nav>
-           
+           </nav>           
        </div>
    </div>
-    <div ng-include="prebookSection">
-        
-    </div>
-    <input type="button" value="Previous" ng-click="updateProgress('previous')" />
-    <input type="button" value="Next" ng-click="updateProgress('next')" />
+    <form ng-include="prebookSection" name="preBookForm">
+
+    </form>
 </div>
 
